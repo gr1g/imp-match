@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-#include "impossible.h"
+
 #include "dummy.h"
 
 
