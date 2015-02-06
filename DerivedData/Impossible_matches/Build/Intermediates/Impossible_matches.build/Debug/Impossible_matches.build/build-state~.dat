@@ -1,152 +1,0 @@
-TImpossible_matches
-v6
-r1
-cCheck dependencies
-cCompileC DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.o /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.o /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cLd /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Products/Debug/Impossible_matches normal x86_64
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
-c000000005351986B00000000000000AA
-t1397856363
-s170
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/SDKSettings.plist
-c000000005267B5F0000000000000044C
-t1382528496
-s1100
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/CoreServices/SystemVersion.plist
-c00000000533A0E0600000000000001DE
-t1396313606
-s478
-
-N/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/include/module.map
-c00000000533A0E0B0000000000000ADC
-t1396313611
-s2780
-
-N/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/Impossible_matches.LinkFileList
-c00000000535EE1E30000000000000191
-t1398727139
-s401
-
-N/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.o
-t1398727139
-s50276
-
-N/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.o
-t1398727139
-s95216
-
-N/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Products/Debug/Impossible_matches
-t2
-s0
-
-N/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp
-c00000000535EDDD90000000000000116
-t1398726105
-s278
-
-N/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp
-c00000000535EE1E10000000000000672
-t1398727137
-s1650
-
-CBuild AST from /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp
-r0
-
-CBuild AST from /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp
-r0
-
-CCheck dependencies
-r0
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies44fa3963190fb941^42783c63190fb941^---0#1#1#--18"Check dependencies36"334F6656-10A1-4048-B7D7-183DC74D8485-
-
-CCompileC DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.o /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s420419939.240717
-e420419939.832857
-r1
-xCompileC
-xDerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.o
-x/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp
-d/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection100"Compile /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp236"CompileC DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.o Impossible_matches/dummy.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler67f23d63190fb941^7a38d563190fb941^---0#0#1#-19%DVTDocumentLocation2@99"file:///Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp0000000000000000^3928"CompileC DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.o Impossible_matches/dummy.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches    export LANG=en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu++11 -stdlib=libc++ -fmodules -fmodules-cache-path=/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Impossible_matches-generated-files.hmap -I/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Impossible_matches-own-target-headers.hmap -I/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Impossible_matches-all-target-headers.hmap -iquote /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Impossible_matches-project-headers.hmap -I/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Products/Debug/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/DerivedSources/x86_64 -I/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/DerivedSources -F/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Products/Debug -MMD -MT dependencies -MF /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.d --serialize-diagnostics /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.dia -c /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp -o /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.o36"8431E12E-9C91-4F19-947B-C98833E9F7A1-
-b5979559B-81E5-4174-A025-867E928F5250
-
-CCompileC DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.o /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s420419939.240881
-e420419939.855369
-r1
-xCompileC
-xDerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.o
-x/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp
-d/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/impossible.h
-d/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection99"Compile /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp234"CompileC DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.o Impossible_matches/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compilera5f33d63190fb941^59fcda63190fb941^---0#0#1#-19%DVTDocumentLocation2@98"file:///Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^3922"CompileC DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.o Impossible_matches/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches    export LANG=en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu++11 -stdlib=libc++ -fmodules -fmodules-cache-path=/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Impossible_matches-generated-files.hmap -I/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Impossible_matches-own-target-headers.hmap -I/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Impossible_matches-all-target-headers.hmap -iquote /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Impossible_matches-project-headers.hmap -I/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Products/Debug/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/DerivedSources/x86_64 -I/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/DerivedSources -F/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Products/Debug -MMD -MT dependencies -MF /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.d --serialize-diagnostics /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.dia -c /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp -o /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.o36"6B4FEF54-A159-4F64-9BBF-C25195EE42CA-
-b5979559B-81E5-4174-A025-867E928F5250
-
-CLd /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Products/Debug/Impossible_matches normal x86_64
-s420419939.855979
-e420419939.919857
-r0
-xLd
-x/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Products/Debug/Impossible_matches
-xnormal
-xx86_64
-d/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/Impossible_matches.LinkFileList
-d/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.o
-d/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.o
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libc++.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libSystem.dylib
-d/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/lib/darwin/libclang_rt.osx.a
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcache.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcommonCrypto.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcompiler_rt.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcopyfile.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcorecrypto.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libdispatch.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libdyld.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libkeymgr.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/liblaunch.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libmacho.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libquarantine.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libremovefile.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_asl.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_blocks.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_c.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_configuration.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_dnssd.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_info.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_kernel.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_m.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_malloc.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_network.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_notify.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_platform.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_pthread.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_sandbox.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_stats.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libunc.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libunwind.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libxpc.dylib
-oUndefined symbols for architecture x86_64:
-o  "DUMMY::printResults(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >)", referenced from:
-o      _main in main.o
-o  "DUMMY::runDUMMY()", referenced from:
-o      _main in main.o
-old: symbol(s) not found for architecture x86_64
-oclang: error: linker command failed with exit code 1 (use -v to see invocation)
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection139"Link /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Products/Debug/Impossible_matches87"Ld DerivedData/Impossible_matches/Build/Products/Debug/Impossible_matches normal x86_649d2edb63190fb941^4a7beb63190fb941^-384"Undefined symbols for architecture x86_64:  "DUMMY::printResults(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >)", referenced from:      _main in main.o  "DUMMY::runDUMMY()", referenced from:      _main in main.old: symbol(s) not found for architecture x86_64clang: error: linker command failed with exit code 1 (use -v to see invocation)6(21%IDEActivityLogMessage2@126""DUMMY::printResults(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >)", referenced from:-420419939#43#129#-2#-23%DVTTextDocumentLocation3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#30"Apple Mach-O Linker (ld) Error--2@15"_main in main.o-420419939#172#22#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#31"Apple Mach-O Linker (ld) Notice--2@37""DUMMY::runDUMMY()", referenced from:-420419939#194#40#-2#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#30"Apple Mach-O Linker (ld) Error--2@15"_main in main.o-420419939#234#22#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#31"Apple Mach-O Linker (ld) Notice--2@43"Symbol(s) not found for architecture x86_64-420419939#256#48#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#31"Apple Mach-O Linker (ld) Notice--2@65"Linker command failed with exit code 1 (use -v to see invocation)-420419939#304#80#-2#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#30"Apple Mach-O Linker (ld) Error--0#0#1#--1338"Ld DerivedData/Impossible_matches/Build/Products/Debug/Impossible_matches normal x86_64    cd /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches    export MACOSX_DEPLOYMENT_TARGET=10.9    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -L/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Products/Debug -F/Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Products/Debug -filelist /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/Impossible_matches.LinkFileList -mmacosx-version-min=10.9 -stdlib=libc++ -Xlinker -dependency_info -Xlinker /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/Impossible_matches_dependency_info.dat -o /Users/guillaume/guillaume/Dropbox/Computing/Impossible_matches/DerivedData/Impossible_matches/Build/Products/Debug/Impossible_matches36"AFDD3D96-1B7F-450B-A317-B5A42B964901-
-b5979559B-81E5-4174-A025-867E928F5250
-

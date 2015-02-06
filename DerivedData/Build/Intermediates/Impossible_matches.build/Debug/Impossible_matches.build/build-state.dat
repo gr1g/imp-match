@@ -1,358 +1,0 @@
-TImpossible_matches
-v6
-r1
-cCheck dependencies
-cCompileC DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.o /Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.o /Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cLd /Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Products/Debug/Impossible_matches normal x86_64
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
-c000000005348281100000000000000AA
-t1397237777
-s170
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/SDKSettings.plist
-c000000005267D0B4000000000000044C
-t1382535348
-s1100
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/CoreServices/SystemVersion.plist
-c00000000531F8B0A00000000000001DE
-t1394576138
-s478
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libSystem.dylib
-c00000000531F8B0B000000000000681C
-t1394576139
-s26652
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libc++.dylib
-c000000005267D0BD000000000006E8B0
-t1382535357
-s452784
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcache.dylib
-c000000005267D0BD0000000000004734
-t1382535357
-s18228
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcommonCrypto.dylib
-c000000005267D0BD000000000000FC6C
-t1382535357
-s64620
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcompiler_rt.dylib
-c000000005267D0BD000000000000F6A0
-t1382535357
-s63136
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcopyfile.dylib
-c000000005267D0BD0000000000006254
-t1382535357
-s25172
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcorecrypto.dylib
-c000000005267D0BD000000000000E0F8
-t1382535357
-s57592
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libdispatch.dylib
-c00000000531F8B0B000000000000D6DC
-t1394576139
-s55004
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libdyld.dylib
-c00000000531F8B0B0000000000006308
-t1394576139
-s25352
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libkeymgr.dylib
-c000000005267D0BD0000000000004050
-t1382535357
-s16464
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/liblaunch.dylib
-c00000000531F8B0B0000000000008570
-t1394576139
-s34160
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libmacho.dylib
-c000000005267D0BD0000000000005EA0
-t1382535357
-s24224
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libquarantine.dylib
-c000000005267D0BD0000000000005FAC
-t1382535357
-s24492
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libremovefile.dylib
-c000000005267D0BD0000000000004440
-t1382535357
-s17472
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_asl.dylib
-c000000005267D0BD000000000000AA28
-t1382535357
-s43560
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_blocks.dylib
-c000000005267D0BD0000000000003E2C
-t1382535357
-s15916
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_c.dylib
-c00000000531F8B0B0000000000030B04
-t1394576139
-s199428
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_configuration.dylib
-c00000000531F8B0B0000000000005E54
-t1394576139
-s24148
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_dnssd.dylib
-c00000000531F8B0B0000000000006A90
-t1394576139
-s27280
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_info.dylib
-c000000005267D0BD00000000000178AC
-t1382535357
-s96428
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_kernel.dylib
-c00000000531F8B0B000000000001ADC8
-t1394576139
-s110024
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_m.dylib
-c000000005267D0BD000000000001028C
-t1382535357
-s66188
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_malloc.dylib
-c00000000531F8B0B0000000000008800
-t1394576139
-s34816
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_network.dylib
-c000000005267D0BD0000000000011090
-t1382535357
-s69776
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_notify.dylib
-c000000005267D0BD000000000000882C
-t1382535357
-s34860
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_platform.dylib
-c00000000531F8B0B00000000000067AC
-t1394576139
-s26540
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_pthread.dylib
-c000000005267D0BD0000000000008DEC
-t1382535357
-s36332
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_sandbox.dylib
-c00000000531F8B0B0000000000004C08
-t1394576139
-s19464
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_stats.dylib
-c00000000531F8B0B0000000000002428
-t1394576139
-s9256
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libunc.dylib
-c000000005267D0BD000000000000439C
-t1382535357
-s17308
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libunwind.dylib
-c000000005267D0BD0000000000006768
-t1382535357
-s26472
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libxpc.dylib
-c00000000531F8B0B00000000000172F4
-t1394576139
-s94964
-
-N/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/include/module.map
-c00000000531F8B0B0000000000000ADC
-t1394576139
-s2780
-
-N/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/lib/darwin/libclang_rt.osx.a
-c00000000534828030000000000001770
-t1397237763
-s6000
-
-N/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/Impossible_matches.LinkFileList
-c00000000535FAD7B0000000000000159
-t1398779259
-s345
-
-N/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.o
-t1400871254
-s494340
-
-N/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.o
-t1400860070
-s120896
-
-N/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Products/Debug/Impossible_matches
-t1400871210
-s152744
-
-N/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp
-c00000000537F99540000000000009957
-t1400871252
-s39255
-
-N/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.h
-c00000000537E4AE700000000000007C2
-t1400785639
-s1986
-
-N/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/impossible.h
-c00000000535EDA6700000000000000FC
-t1398725223
-s252
-
-N/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp
-c00000000537F6DA40000000000000A5A
-t1400860068
-s2650
-
-CBuild AST from /Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp
-r0
-
-CBuild AST from /Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp
-r0
-
-CCheck dependencies
-r0
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies240b58d4d02fb941^faed6bd4d02fb941^---0#1#1#--18"Check dependencies36"2ECB677E-5AA0-417A-95BB-B4196576DF15-
-
-CCompileC DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.o /Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s422564052.421976
-e422564054.852180
-r1
-xCompileC
-xDerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.o
-x/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp
-d/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.h
-o/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp:1028:6: warning: '/*' within block comment [-Wcomment]
-o     /*
-o     ^
-o1 warning generated.
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection91"Compile /Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp217"CompileC DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.o Impossible_matches/dummy.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compilere4156cd4d02fb941^aa28dad6d02fb941^-175"/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp:1028:6: warning: '/*' within block comment [-Wcomment]     /*     ^1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@25"'/*' within block comment-422564054#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@90"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp0000000000000000^1027#5#1027#5#32290#0#29"Lexical or Preprocessor Issue--0#0#1#-19%DVTDocumentLocation4@90"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp0000000000000000^3574"CompileC DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.o Impossible_matches/dummy.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/ghaeringer/Dropbox/Computing/Impossible_matches    export LANG=en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu++11 -stdlib=libc++ -fmodules -fmodules-cache-path=/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Impossible_matches-generated-files.hmap -I/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Impossible_matches-own-target-headers.hmap -I/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Impossible_matches-all-target-headers.hmap -iquote /Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Impossible_matches-project-headers.hmap -I/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Products/Debug/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/DerivedSources/x86_64 -I/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/DerivedSources -F/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Products/Debug -MMD -MT dependencies -MF /Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.d --serialize-diagnostics /Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.dia -c /Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.cpp -o /Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.o36"829A601B-4978-4F9F-9849-4708F1C9727A-
-bAF6F28C2-79A4-4B27-93CC-FF561405779F
-
-CCompileC DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.o /Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s422552868.855312
-e422552870.445640
-r1
-xCompileC
-xDerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.o
-x/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp
-d/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/impossible.h
-d/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/dummy.h
-o/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:31:11: warning: conversion from string literal to 'char *' is deprecated [-Wdeprecated-writable-strings]
-o        second = "second";
-o                 ^
-o/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:32:11: warning: conversion from string literal to 'char *' is deprecated [-Wdeprecated-writable-strings]
-o        minute = "minute";
-o                 ^
-o/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:33:9: warning: conversion from string literal to 'char *' is deprecated [-Wdeprecated-writable-strings]
-o        hour = "hour";
-o               ^
-o/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:89:22: warning: conversion from string literal to 'char *' is deprecated [-Wdeprecated-writable-strings]
-o            minute = "minutes";
-o                     ^
-o/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:92:22: warning: conversion from string literal to 'char *' is deprecated [-Wdeprecated-writable-strings]
-o            second = "seconds";
-o                     ^
-o/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:95:20: warning: conversion from string literal to 'char *' is deprecated [-Wdeprecated-writable-strings]
-o            hour = "hours";
-o                   ^
-o/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:28:18: warning: unused variable 't3' [-Wunused-variable]
-o    time_t t1,t2,t3,t4;    /* time variables to count the time spent running the program*/
-o                 ^
-o/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:28:21: warning: unused variable 't4' [-Wunused-variable]
-o    time_t t1,t2,t3,t4;    /* time variables to count the time spent running the program*/
-o                    ^
-o/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:85:24: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]
-o        hours = (t2-t1)/3600;
-o              ~ ~~~~~~~^~~~~
-o/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:86:29: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]
-o        minutes = (t2-t1)/60-60*hours;
-o                ~ ~~~~~~~~~~^~~~~~~~~
-o/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:87:35: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]
-o        seconds = t2-t1-60*minutes-3600*hours;
-o                ~ ~~~~~~~~~~~~~~~~^~~~~~~~~~~
-o11 warnings generated.
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection90"Compile /Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp215"CompileC DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.o Impossible_matches/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler6d03db24a52fb941^01157226a52fb941^-2716"/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:31:11: warning: conversion from string literal to 'char *' is deprecated [-Wdeprecated-writable-strings]        second = "second";                 ^/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:32:11: warning: conversion from string literal to 'char *' is deprecated [-Wdeprecated-writable-strings]        minute = "minute";                 ^/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:33:9: warning: conversion from string literal to 'char *' is deprecated [-Wdeprecated-writable-strings]        hour = "hour";               ^/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:89:22: warning: conversion from string literal to 'char *' is deprecated [-Wdeprecated-writable-strings]            minute = "minutes";                     ^/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:92:22: warning: conversion from string literal to 'char *' is deprecated [-Wdeprecated-writable-strings]            second = "seconds";                     ^/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:95:20: warning: conversion from string literal to 'char *' is deprecated [-Wdeprecated-writable-strings]            hour = "hours";                   ^/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:28:18: warning: unused variable 't3' [-Wunused-variable]    time_t t1,t2,t3,t4;    /* time variables to count the time spent running the program*/                 ^/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:28:21: warning: unused variable 't4' [-Wunused-variable]    time_t t1,t2,t3,t4;    /* time variables to count the time spent running the program*/                    ^/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:85:24: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]        hours = (t2-t1)/3600;              ~ ~~~~~~~^~~~~/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:86:29: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]        minutes = (t2-t1)/60-60*hours;                ~ ~~~~~~~~~~^~~~~~~~~/Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp:87:35: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]        seconds = t2-t1-60*minutes-3600*hours;                ~ ~~~~~~~~~~~~~~~~^~~~~~~~~~~11 warnings generated.11(36%IDEClangDiagnosticActivityLogMessage2@56"Conversion from string literal to 'char *' is deprecated-422552870#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@89"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^30#10#30#10#562#0#14"Semantic Issue--2@56"Conversion from string literal to 'char *' is deprecated-422552870#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic3@89"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^31#10#31#10#582#0#14"Semantic Issue--2@56"Conversion from string literal to 'char *' is deprecated-422552870#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic3@89"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^32#8#32#8#600#0#14"Semantic Issue--2@56"Conversion from string literal to 'char *' is deprecated-422552870#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic3@89"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^88#21#88#21#1945#0#14"Semantic Issue--2@56"Conversion from string literal to 'char *' is deprecated-422552870#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic3@89"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^91#21#91#21#2015#0#14"Semantic Issue--2@56"Conversion from string literal to 'char *' is deprecated-422552870#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic3@89"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^94#19#94#19#2081#0#14"Semantic Issue--2@20"Unused variable 't3'-422552870#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic3@89"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^27#17#27#17#421#0#19"Unused Entity Issue--2@20"Unused variable 't4'-422552870#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic3@89"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^27#20#27#20#424#0#19"Unused Entity Issue--2@60"Implicit conversion loses integer precision: 'long' to 'int'-422552870#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic3@89"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^84#23#84#23#1803#0#22"Value Conversion Issue2(3@89"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^84#16#84#28#1796#8#3@89"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^84#14#84#15#1794#0#-2@60"Implicit conversion loses integer precision: 'long' to 'int'-422552870#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic3@89"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^85#28#85#28#1838#0#22"Value Conversion Issue2(3@89"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^85#18#85#37#1828#14#3@89"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^85#16#85#17#1826#0#-2@60"Implicit conversion loses integer precision: 'long' to 'int'-422552870#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic3@89"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^86#34#86#34#1883#0#22"Value Conversion Issue2(3@89"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^86#18#86#45#1867#22#3@89"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^86#16#86#17#1865#0#-0#0#1#-19%DVTDocumentLocation4@89"file:///Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp0000000000000000^3568"CompileC DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.o Impossible_matches/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/ghaeringer/Dropbox/Computing/Impossible_matches    export LANG=en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu++11 -stdlib=libc++ -fmodules -fmodules-cache-path=/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Impossible_matches-generated-files.hmap -I/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Impossible_matches-own-target-headers.hmap -I/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Impossible_matches-all-target-headers.hmap -iquote /Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Impossible_matches-project-headers.hmap -I/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Products/Debug/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/DerivedSources/x86_64 -I/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/DerivedSources -F/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Products/Debug -MMD -MT dependencies -MF /Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.d --serialize-diagnostics /Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.dia -c /Users/ghaeringer/Dropbox/Computing/Impossible_matches/Impossible_matches/main.cpp -o /Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.o36"F136F768-F4C3-41F6-908F-1DB27AAFA2FE-
-b405FD39C-415B-4C95-92C8-4CB9E85E17FB
-
-CLd /Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Products/Debug/Impossible_matches normal x86_64
-s422564054.862215
-e422564055.060397
-r1
-xLd
-x/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Products/Debug/Impossible_matches
-xnormal
-xx86_64
-d/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/Impossible_matches.LinkFileList
-d/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/dummy.o
-d/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/main.o
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libc++.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libSystem.dylib
-d/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/lib/darwin/libclang_rt.osx.a
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcache.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcommonCrypto.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcompiler_rt.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcopyfile.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcorecrypto.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libdispatch.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libdyld.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libkeymgr.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/liblaunch.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libmacho.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libquarantine.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libremovefile.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_asl.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_blocks.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_c.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_configuration.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_dnssd.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_info.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_kernel.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_m.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_malloc.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_network.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_notify.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_platform.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_pthread.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_sandbox.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_stats.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libunc.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libunwind.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libxpc.dylib
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection111"Link /Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Products/Debug/Impossible_matches68"Ld DerivedData/Build/Products/Debug/Impossible_matches normal x86_6426c4dcd6d02fb941^249b0fd7d02fb941^---0#0#1#--1170"Ld DerivedData/Build/Products/Debug/Impossible_matches normal x86_64    cd /Users/ghaeringer/Dropbox/Computing/Impossible_matches    export MACOSX_DEPLOYMENT_TARGET=10.9    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -L/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Products/Debug -F/Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Products/Debug -filelist /Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/Impossible_matches.LinkFileList -mmacosx-version-min=10.9 -stdlib=libc++ -Xlinker -dependency_info -Xlinker /Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Intermediates/Impossible_matches.build/Debug/Impossible_matches.build/Objects-normal/x86_64/Impossible_matches_dependency_info.dat -o /Users/ghaeringer/Dropbox/Computing/Impossible_matches/DerivedData/Build/Products/Debug/Impossible_matches36"96142A3A-5CD2-4637-821C-1CCC417F78C7-
-bAF6F28C2-79A4-4B27-93CC-FF561405779F
-
