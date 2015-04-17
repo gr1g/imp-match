@@ -32,7 +32,7 @@ int main(int argc, const char * argv[])
     minute = "minute";
     hour = "hour";
     
-    for (year_index = 5 ; year_index < 6 ; year_index++) {
+    for (year_index = 0 ; year_index < 12 ; year_index++) {
         if (year_index == 0) {
             filename = "1999-data.txt";
         }
