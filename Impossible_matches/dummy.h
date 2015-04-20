@@ -34,20 +34,28 @@ public:
     void postAnalysis();
     void printResults(string outputFile);
     
-    
     // Main functions
     
     int rankedOnce();
     int rankedMutiple();
+    
+    int newrankedOnce(vector<vector<int> > &rankingsOfPositions);
+    int newrankedMutiple(vector<vector<int> > &rankingsOfPositions);
+    
     void simpleBlocks();    // calls in a loop rankedOnce() and RankedMultiple(): to eliminate easy cases of impossible matches (see web appendix)
+    void petitsblocks(vector<vector<int> > &rankingsOfPositions);
     void buildPossible_K();
     void admissibleGraph(); // to get a comprehensive matching
-    void checkComprehensiveness();
+    void checkComprehensiveness(string step);
     void comprehensiveMatching(); // construct a comprehensive matching
-    void Simplify_i0(int i0, int s0); // construct rankings from originalRankings
+    void simplify_i0(int i0, int s0); // construct rankings from originalRankings
     void checkImpossible(int i0, int s0); // main function to check a candidate is impossible
     void buildGamma(vector<int> &J_0, int i0); // construct the set Gamma_cand
     void graphOfJ();    // construct the edge set used to compute a maximum matching (rankings restricted to Gamma_cand, truncated at K)
+    void matchingStars();   // assign candidates ranked only 1st (and at least twice) to a position.
+    
+    void nextChoices(vector<int> &theSet, vector<int> &capacity);
+    
     
     
     // Maximum matching functions
@@ -75,12 +83,12 @@ public:
     vector<int> Gamma_cand; // The set that is (or not) a block ($\mathbf{J}$ in the proof, see paper)
     vector<int> Gamma_dep; // Acceptable positions for candidates in Gamma_cand
     unsigned long sizeK;
-    signed long int LoopNumber;
+    signed long int loopNumber;
     
     
     // Additional functions
     
-    int Index(const vector<int> &S, int a); // Get the index of "a" in a vector "S" (spans all coordinate starting from 0)
+    int index(const vector<int> &S, int a); // Get the index of "a" in a vector "S" (spans all coordinate starting from 0)
     int indexInRankings(const vector<int> &S, int a);   // Get the index of "candidate" a in a ranking "S" (spans all coordinate starting from 1)
     void Truncate(vector<int> &S, int a);
     bool presentInVector(const vector<int> &S, int z);  // Return 1 if "z" is in "S", 0 otherwise
