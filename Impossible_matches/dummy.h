@@ -52,7 +52,9 @@ public:
     void checkImpossible(int i0, int s0); // main function to check a candidate is impossible
     void buildGamma(vector<int> &J_0, int i0); // construct the set Gamma_cand
     void graphOfJ();    // construct the edge set used to compute a maximum matching (rankings restricted to Gamma_cand, truncated at K)
+    
     void matchingStars();   // assign candidates ranked only 1st (and at least twice) to a position.
+    
     
     void nextChoices(vector<int> &theSet, vector<int> &capacity);
     
@@ -62,6 +64,8 @@ public:
     int dfs(int a);
     int dfsExp(int a);
     int bipMatch();
+    
+    string theFunction;
     
     // Variables, vectors, ...
     
@@ -84,6 +88,7 @@ public:
     vector<int> Gamma_dep; // Acceptable positions for candidates in Gamma_cand
     unsigned long sizeK;
     signed long int loopNumber;
+    vector<vector<int>> hired;
     
     
     // Additional functions

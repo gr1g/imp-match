@@ -56,6 +56,7 @@ int DUMMY::indexInRankings(const vector<int> &S, int a){
 
 // Check if "z" is present in a vector "S"
 bool DUMMY::presentInVector(const vector<int> &S, int z) {
+    
     bool found = (std::find(S.begin(), S.end(), z) != S.end());
     if (found==1) {
         if (index(S,z)!=-1) {
@@ -76,7 +77,14 @@ bool DUMMY::presentInVector(const vector<int> &S, int z) {
 // "a" is the ID (or NAME) of the candidate, it is NOT its rank number in the ranking of the department.
 
 void DUMMY::Truncate(vector<int> &S, int a){
+    int rank = indexInRankings(S, a);
     S.erase(S.begin()+indexInRankings(S,a),S.end());
+    /*
+     if (rank>-1) {
+     if (S.size()>rank) {
+     }
+     }
+     */
 }
 
 
@@ -162,6 +170,7 @@ int DUMMY::bipMatch()
 
 
 void DUMMY::admissibleGraph() {
+    theFunction="admissibleGraph";
     
     int i,j;
     unsigned long stop=1;
@@ -177,7 +186,7 @@ void DUMMY::admissibleGraph() {
     // For each position j and the candidate ranked 1st in j's ranking, say, i (i.e., ranking[j][1]=i there's an edge.
     // (the edge is done using the index of ranking[j][1] in Candidates[].)
     for (j = 0 ; j < rankings.size() ; j++) {
-        if (rankings[j][1]>-1) { // so rankings[j][1] = 0, 1, 2, ... => the 1st ranked is a candidate (0, 1, 2, ... is the name of the candidate
+        if (rankings[j].size()>1) { // so rankings[j][1] = 0, 1, 2, ... => the 1st ranked is a candidate (0, 1, 2, ... is the name of the candidate
             edge[index(Candidates, rankings[j][1])][j]=1; // edge created between that candidate and that department.
             // edge[i][j] = 1 => edge between the i-th candidate in Candidates and the j-th position.
         }
@@ -222,6 +231,7 @@ void DUMMY::admissibleGraph() {
 
 
 int DUMMY::newrankedOnce(vector<vector<int> > &rankingsOfPositions) {
+    theFunction="newRankedOnce";
     
     int DidTruncate;
     int i,j,ii,jj;
@@ -286,6 +296,7 @@ int DUMMY::newrankedOnce(vector<vector<int> > &rankingsOfPositions) {
 
 
 int DUMMY::rankedOnce() {
+    theFunction="rankedOnce";
     
     int DidTruncate;
     int i,j,ii,jj;
@@ -351,6 +362,7 @@ int DUMMY::rankedOnce() {
 
 
 int DUMMY::newrankedMutiple(vector<vector<int> > &rankingsOfPositions) {
+    theFunction="newrankedMultiple";
     
     int i,j,ii;
     int found,maxSize;
@@ -498,6 +510,7 @@ int DUMMY::newrankedMutiple(vector<vector<int> > &rankingsOfPositions) {
 
 
 int DUMMY::rankedMutiple(){
+    theFunction="rankedMultiple";
     
     int i,j,ii;
     int found,maxSize;
@@ -640,6 +653,7 @@ int DUMMY::rankedMutiple(){
 //
 
 void DUMMY::simpleBlocks() {
+    theFunction="simpleBlocks";
     
     int NotDoneYet=1;
     int TempValue=0;
@@ -680,6 +694,7 @@ void DUMMY::simpleBlocks() {
 //
 
 void DUMMY::petitsblocks(vector<vector<int> > &rankingsOfPositions) {
+    theFunction="petitsblocks";
     
     int NotDoneYet=1;
     int TempValue=0;
@@ -719,6 +734,7 @@ void DUMMY::petitsblocks(vector<vector<int> > &rankingsOfPositions) {
 
 
 void DUMMY::loadData(std::string dataFile) {
+    theFunction="loadData";
     
     
     //
@@ -745,6 +761,7 @@ void DUMMY::loadData(std::string dataFile) {
     Gamma_dep.clear();
     sizeK=-1;
     loopNumber=-1;
+    
     
     ifstream data_read;
     
@@ -789,11 +806,30 @@ void DUMMY::loadData(std::string dataFile) {
     data_read.close();
     
     
+    
+    
     for (row = 0 ; row < OpePostes.size(); row++) {
         //  for each position id (in OpePostes[][3]
         //  check if already in Position[]. If not add it.
         if (!presentInVector(Positions, OpePostes[row][3])) {
             Positions.push_back(OpePostes[row][3]);
+        }
+    }
+    
+    hired.clear();
+    hired.resize(Positions.size());
+    for (int j = 0 ; j < hired.size() ; j++) {
+        hired[j].resize(0);
+        hired[j].push_back(Positions[j]);
+        hired[j].push_back(-1);
+    }
+    for (int j = 0 ; j < Positions.size() ; j++) {
+        for (int jj = 0 ; jj < OpePostes.size() ; jj++) {
+            if (OpePostes[jj][3]==Positions[j]) {
+                if (OpePostes[jj][1]==1) {
+                    hired[j][1]=OpePostes[jj][0];
+                }
+            }
         }
     }
     
@@ -826,6 +862,31 @@ void DUMMY::loadData(std::string dataFile) {
             }
         }
     }
+    
+    
+    int nothired;
+    
+    for (int j = 0 ; j < originalRankings.size() ; j++) {
+        if (hired[j][1]!=-1) {
+            for (int i = 1 ; i < indexInRankings(originalRankings[j], hired[j][1]); i++) {
+                // Check if they are hired somewhere
+                nothired=1;
+                for (int jj = 0 ; jj < hired.size() ; jj++) {
+                    if (hired[jj][1]==originalRankings[j][i]) {
+                        nothired=0;
+                    }
+                }
+                if (nothired==1) {
+                    cout << "Candidate " << originalRankings[j][i] << " is not hired anywhere, position =  " << originalRankings[j][0] << "\n";
+                    originalRankings[j].erase(originalRankings[j].begin()+i);
+                }
+            }
+        }
+    }
+    cout << "\n";
+    
+    
+    
 }
 
 
@@ -850,6 +911,7 @@ void DUMMY::loadData(std::string dataFile) {
 
 
 void DUMMY::analyzeData() {
+    theFunction="analyzeData";
     
     
     // first simplify the ranking profile by eliminating
@@ -946,7 +1008,8 @@ void DUMMY::analyzeData() {
         }
     }
     postAnalysis();
-    //matchingStars();  DO NOT UNQUOTE THIS YET!!!!
+    matchingStars();  //DO NOT UNQUOTE THIS YET!!!!
+    //chains();
     
     
 }
@@ -968,6 +1031,7 @@ void DUMMY::analyzeData() {
 
 
 void DUMMY::postAnalysis() {
+    theFunction="postAnalysis";
     
     int topCandidates;
     int numberCombinations;
@@ -1024,6 +1088,7 @@ void DUMMY::postAnalysis() {
 
 
 void DUMMY::matchingStars() {
+    theFunction="matchingStars";
     
     int topCandidates;
     int numberCombinations;
@@ -1038,6 +1103,11 @@ void DUMMY::matchingStars() {
     starsChoiceSet.resize(0);
     vector<int> choices;
     choices.clear();
+    
+    int totalSum = 0;
+    int min = (int)(originalRankings.size());
+    int max = 0;
+    
     
     // Make the list of candidates (marketStars[]) ranked several times and always 1st.
     for (int j = 0 ; j < originalRankings.size() ; j++) {
@@ -1071,17 +1141,20 @@ void DUMMY::matchingStars() {
             }
         }
     }
+    /*
+     cout << "\n";
+     cout << "Market stars\n";
+     for (int i = 0 ; i < marketStars.size() ; i++) {
+     cout << marketStars[i] << "\t";
+     for (int j = 0 ; j < starsChoiceSet[i].size() ; j++) {
+     cout << originalRankings[starsChoiceSet[i][j]][0] << "\t";
+     }
+     cout << "\n";
+     }
+     cout << "\n";
+     cout << "\n";
+     */
     
-    cout << "\n";
-    cout << "Market stars\n";
-    for (int i = 0 ; i < marketStars.size() ; i++) {
-        cout << marketStars[i] << "\t";
-        for (int j = 0 ; j < starsChoiceSet[i].size() ; j++) {
-            cout << originalRankings[starsChoiceSet[i][j]][0] << "\t";
-        }
-        cout << "\n";
-    }
-    cout << "\n";
     
     // copy originalRankings[] into a buffer.
     vector<vector<int> > BUFFERoriginalRankings;
@@ -1090,8 +1163,11 @@ void DUMMY::matchingStars() {
     for (int j = 0 ; j < originalRankings.size() ; j++) {
         for (int i = 0 ; i < originalRankings[j].size() ; i++) {
             BUFFERoriginalRankings[j].push_back(originalRankings[j][i]);
+            //cout << originalRankings[j][i] << "\t";
         }
+        //cout << "\n";
     }
+    //cout << "\n";
     
     /*
      for (int j = 0 ; j < BUFFERoriginalRankings.size() ; j++) {
@@ -1110,9 +1186,6 @@ void DUMMY::matchingStars() {
         theTotal=theTotal*(int)(starsChoiceSet[i].size());
     }
     
-    cout << theTotal << " combinations to consider!!\n";
-    
-    cout << "hello\n";
     
     vector<int> theChoices;
     vector<int> capacity;
@@ -1127,34 +1200,34 @@ void DUMMY::matchingStars() {
     for (int i = 0 ; i < marketStars.size(); i++) {
         capacity.push_back((int)(starsChoiceSet[i].size()));
     }
-    cout << "\nCapacities\n";
     
-    for (int i = 0 ; i < capacity.size() ; i++) {
-        cout << capacity[i] << " ";
-    }
     
-    cout << "\n";
-    
-    cout << "The choices \n";
-    
-    for (int i = 0 ; i < starsChoiceSet.size() ; i++) {
-        for (int j = 0 ; j < starsChoiceSet[i].size() ; j++) {
-            cout << starsChoiceSet[i][j] << " ";
-        }
-        cout << "\n";
-    }
-    cout << "\n";
-    
+    /*
+     cout << "The choices \n";
+     
+     for (int i = 0 ; i < starsChoiceSet.size() ; i++) {
+     for (int j = 0 ; j < starsChoiceSet[i].size() ; j++) {
+     cout << starsChoiceSet[i][j] << " ";
+     }
+     cout << "\n";
+     }
+     cout << "\n";
+     */
     
     int laCombination=1;
     
-    for (int qw = 0 ; qw < theTotal ; qw++) {
+    while (laCombination < theTotal) {
+        cout << laCombination << "\n";
         // reset originalRankings using the buffer
         // reset impossibles[][]
         originalRankings.clear();
         originalRankings.resize(BUFFERoriginalRankings.size());
         impossibles.clear();
         impossibles.resize(BUFFERoriginalRankings.size());
+        for (int j = 0 ; j < originalRankings.size() ; j++) {
+            originalRankings[j].clear();
+            originalRankings[j].resize(0);
+        }
         for (int j = 0 ; j < BUFFERoriginalRankings.size() ; j++) {
             for (int i = 0 ; i < BUFFERoriginalRankings[j].size() ; i++) {
                 originalRankings[j].push_back(BUFFERoriginalRankings[j][i]);
@@ -1165,11 +1238,39 @@ void DUMMY::matchingStars() {
                 impossibles[j].push_back(-1);
             }
         }
+        for (int j = 0 ; j < originalRankings.size() ; j++) {
+            if (originalRankings[j].size() > 20 ) {
+                cout << "ERREUR SIZE BEFORE TRUNCATION\n ";
+                for (int i = 0 ; i < 20 ; i++) {
+                    cout << originalRankings[j][i] << "\t";
+                }
+                cout << "\n";
+            }
+        }
+        
+        
+        
         for (int i = 0 ; i < starsChoiceSet.size() ; i++) {
             int choice = theChoices[i];
             int positionChosen = starsChoiceSet[i][choice];
             // truncate for positionChosen at the candidate ranked 2nd.
-            Truncate(originalRankings[positionChosen], originalRankings[positionChosen][2]);
+            if (originalRankings[positionChosen].size()>2) {
+                Truncate(originalRankings[positionChosen], originalRankings[positionChosen][2]);
+            }
+            for (int j = 0 ; j < originalRankings.size() ; j++) {
+                if (originalRankings[j].size() > 20 ) {
+                    cout << "ERREUR SIZE AFTER TRUNCATION/BEFORE ELIMINATION\n ";
+                    cout << "positionChosen = " << positionChosen << "\n";
+                    cout << "size = " << originalRankings[j].size() << "\n";
+                    cout << "candidate = " << marketStars[i] << "\n";
+                    for (int ii = 0 ; ii < 20 ; ii++) {
+                        cout << originalRankings[j][ii] << "\t";
+                    }
+                    cout << "\n";
+                }
+            }
+            
+            
             for (int j = 0 ; j < starsChoiceSet[i].size() ; j++) {
                 if (j!=theChoices[i]) {
                     originalRankings[starsChoiceSet[i][j]].erase(originalRankings[starsChoiceSet[i][j]].begin()+1);
@@ -1177,6 +1278,17 @@ void DUMMY::matchingStars() {
                 }
             }
         }
+        
+        for (int j = 0 ; j < originalRankings.size() ; j++) {
+            if (originalRankings[j].size() > 20 ) {
+                cout << "ERREUR SIZE AFTER TRUNCATION\n ";
+                for (int i = 0 ; i < 20 ; i++) {
+                    cout << originalRankings[j][i] << "\t";
+                }
+                cout << "\n";
+            }
+        }
+        
         
         // Find the impossible matches
         for (int j = 0 ; j < originalRankings.size() ; j++) {
@@ -1219,11 +1331,29 @@ void DUMMY::matchingStars() {
                 }
             }
         }
-        cout << laCombination << "\tAfter stars: "  << counter << " positions solved out of " << originalRankings.size() << " (" << 100*((float)counter/(float)originalRankings.size())  << "%)\n";
-        nextChoices(theChoices, capacity);
+        totalSum=totalSum+counter;
+        //        cout << laCombination << "\tAfter stars: "  << counter << " positions solved out of " << originalRankings.size() << " (" << 100*((float)counter/(float)originalRankings.size())  << "%)\n";
+        if (laCombination<theTotal) {
+            nextChoices(theChoices, capacity);
+        }
+        if (counter<min) {
+            min=counter;
+        }
+        if (counter>max) {
+            max=counter;
+        }
+        
         laCombination++;
         
     }
+    
+    float average;
+    average = (float)(totalSum)/(float)(theTotal);
+    
+    cout << "On average, " << average << " positions solved out " << originalRankings.size() << " (" << 100*((float)average/(float)originalRankings.size())  << "%)\n";
+    cout << "Max number of positions solved = " << max << " (" << 100*((float)max/(float)originalRankings.size())  << "%)\n";
+    cout << "Min number of positions solved = " << min << " (" << 100*((float)min/(float)originalRankings.size())  << "%)\n";
+    
     
     
     
@@ -1446,7 +1576,13 @@ void DUMMY::simplify_i0(int i0, int s0) {
     for (int i = 0 ; i < Candidates.size() ; i++) {
         if (Candidates[i]!=i0) {
             for (int j = 0 ; j < originalRankings.size() ; j++) {
-                if (indexInRankings(originalRankings[j], Candidates[i])>0) {
+                if (Candidates[i]==2999) {
+                    if (originalRankings[j].size()>10) {
+                        cout << "Candidate " << Candidates[i] << ", postes = " << j << "(" << originalRankings[j][0] << "), index = " << index(originalRankings[j], Candidates[i]) << " " << originalRankings.size() << "\n";
+                        cout << "Candidate " << Candidates[i] << ", postes = " << j+1 << "(" << originalRankings[j+1][0] << "), index = " << index(originalRankings[j+1], Candidates[i]) << " " << originalRankings.size() << "\n";
+                    }
+                }
+                if (index(originalRankings[j], Candidates[i])>0) {
                     for (int ii = 1 ; ii < indexInRankings(originalRankings[j], Candidates[i]) ; ii++) {
                         if (!presentInVector(Candidates, originalRankings[j][ii])) {
                             Candidates.push_back(originalRankings[j][ii]);
