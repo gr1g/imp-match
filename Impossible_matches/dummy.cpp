@@ -1216,7 +1216,7 @@ void DUMMY::matchingStars() {
 	cout << "Running the combinations\n";
 	
 	while (laCombination < theTotal) {
-		cout << laCombination << "\t";
+		cout << laCombination << "\n";
 		// reset originalRankings using the buffer
 		// reset impossibles[][]
 		
@@ -1276,7 +1276,7 @@ void DUMMY::matchingStars() {
 		int combination2=0;
 		vector<vector<int>> BUFFER2;
 		copyRankings(originalRankings, BUFFER2);
-		
+		/*
 		while (combination2 < total2-1) {
 			//cout << combination2 << " ";
 			copyRankings(BUFFER2,originalRankings);
@@ -1345,7 +1345,7 @@ void DUMMY::matchingStars() {
 			combination2++;
 			totalNumberCombinations++;
 		}
-		
+		*/
 		
 		//        cout << laCombination << "\tAfter stars: "  << counter << " positions solved out of " << originalRankings.size() << " (" << 100*((float)counter/(float)originalRankings.size())  << "%)\n";
 		if (laCombination<theTotal) {
