@@ -4,7 +4,7 @@
 //
 //  Created by Guillaume Haeringer on 4/28/14.
 //  Copyright (c) 2014 Guillaume Haeringer. All rights reserved.
-//
+// Hello
 
 #include <iostream>
 
