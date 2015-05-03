@@ -46,14 +46,16 @@ public:
 	
 	void simpleBlocks();    // calls in a loop rankedOnce() and RankedMultiple(): to eliminate easy cases of impossible matches (see web appendix)
 	void petitsblocks(vector<vector<int> > &rankingsOfPositions);
-	void buildPossible_K();
-	void admissibleGraph(); // to get a comprehensive matching
-	void checkComprehensiveness(string step);
-	void comprehensiveMatching(); // construct a comprehensive matching
-	void simplify_i0(int i0, int s0); // construct rankings from originalRankings
-	void checkImpossible(int i0, int s0); // main function to check a candidate is impossible
-	void buildGamma(vector<int> &J_0, int i0); // construct the set Gamma_cand
-	void graphOfJ();    // construct the edge set used to compute a maximum matching (rankings restricted to Gamma_cand, truncated at K)
+	//void buildPossible_K(vector<vector<int> > &profile);
+	
+	void buildPossible_K(vector<vector<int> > &rankings);
+	vector<vector<int> > admissibleGraph(vector<vector<int> > &rankings,vector<int> &candidates, vector<int> &matchCandidates); // to get a comprehensive matching
+	void checkComprehensiveness(vector<vector<int> > &srankings, vector<int> &candidates, string step);
+	void comprehensiveMatching(vector<vector<int> > &rankings, vector<int> &candidates, vector<int> &matching_candidate, vector<int> &matching_department); // construct a comprehensive matching
+	vector<vector<int> > simplify_i0(vector<vector<int> > &profile, int i0, int s0); // construct rankings from profile
+	void checkImpossible(vector<vector<int> > &rankings, int i0, int s0); // main function to check a candidate is impossible
+	void buildGamma(vector<vector<int> > &rankings, vector<int> &candidates, vector<int> &J_0, int i0, vector<int> &matching_candidate, vector<int> &matching_department); // construct the set Gamma_cand
+	vector<vector<int> > graphOfJ(vector<vector<int> > &rankings, vector<int> &candidates);    // construct the edge set used to compute a maximum matching (rankings restricted to Gamma_cand, truncated at K)
 	
 	void matchingStars();   // assign candidates ranked only 1st (and at least twice) to a position.
 	void getStars(vector<int> &theStars, vector<vector<int>> &theirChoices);
@@ -61,31 +63,42 @@ public:
 	
 	void nextChoices(vector<int> &theSet, vector<int> &capacity);
 	
+	int marketCleared(vector<vector<int> > &profile);
+	
+	void hello(vector<vector<int> > bonjour);
+	
 	void copyRankings(vector<vector<int> > &source, vector<vector<int> > &copy);
 	
 	// Maximum matching functions
-	int dfs(int a);
-	int dfsExp(int a);
-	int bipMatch();
-	
+	/*
+	int dfs(vector<vector<int> > &rankings, int a, vector<int> &candidates, vector<int> & matching_candidate,vector<int> & matching_department, vector<vector<int> > &edge);
+	int dfsExp(vector<vector<int> > &rankings, int a, vector<int> &candidates, vector<int> & matching_candidate,vector<int> & matching_department, vector<vector<int> > &edge);
+	int bipMatch(vector<vector<int> > &rankings, vector<int> &candidates, vector<vector<int> > &edge, vector<int> & matching_candidate, vector<int> &matching_department);
+	*/
 	string theFunction;
 	
 	// Variables, vectors, ...
 	
+	int dfs(vector<vector<int> > rankings, int a, vector<int> candidates, vector<vector<int> > edge, vector<int> &matching_candidate, vector<int> &matching_department, vector<int> &visited);
+	int dfsExp(vector<vector<int> > rankings, int a, vector<int> candidates, vector<vector<int> > edge, vector<int> &matching_candidate, vector<int> &matching_department);
+	int bipMatch(vector<vector<int> > rankings, vector<int> candidates, vector<vector<int> > edge, vector<int> &matching_candidate, vector<int> &matching_department);
+
+	
+	
 	vector<vector<int> > originalRankings; // The data for each year
-	vector<vector<int> > rankings;  // The data tailored for a pair candidate-position
+//	vector<vector<int> > rankings;  // The data tailored for a pair candidate-position
 	vector<vector<int> > impossibles; // Recording who is an impossible match. Same dimensions are originalRankings
-	vector<vector<int> > edge;  // Graph to compute a matching
-	vector<int> Candidates; // set of candidates that are in rankings
-	vector<int> Positions;
-	vector<int> matching_candidate; // matching_candidate[i]=j <=> the i-th candidate in Candidates[] is matched to the j-th position in rankings[][]
-	vector<int> matching_department;  // matching_department[j]=i <=> the j-th position in rankings[][] is matched to the i-th candidate in Candidates[]
+//	vector<vector<int> > edge;  // Graph to compute a matching
+//	vector<int> Candidates; // set of candidates that are in rankings
+//	vector<int> Positions;
+//	vector<int> matching_candidate; // matching_candidate[i]=j <=> the i-th candidate in Candidates[] is matched to the j-th position in rankings[][]
+//	vector<int> matching_department;  // matching_department[j]=i <=> the j-th position in rankings[][] is matched to the i-th candidate in Candidates[]
 	vector<vector<int> > OpePostes; // the data from the file
 	int TempRanking[20]; // used to create originalRankings from OpePostes
 	vector<int> K;  // set of students used for the truncation (see definition of a block in the paper)
 	vector<int> possible_K; // sets of students who can be in K
 	vector<int> selectedIndex; // used to select a set K in possible_K
-	vector<int> visited; // used to compute the maximum matching
+//	vector<int> visited; // used to compute the maximum matching
 	vector<int> J_0;    // Set J_0 (see paper)
 	vector<int> Gamma_cand; // The set that is (or not) a block ($\mathbf{J}$ in the proof, see paper)
 	vector<int> Gamma_dep; // Acceptable positions for candidates in Gamma_cand

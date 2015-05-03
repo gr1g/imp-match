@@ -73,22 +73,12 @@ bool DUMMY::presentInVector(const vector<int> &S, int z) {
 	}
 }
 
-
-
-
 // Given the ranking of a position (vector S), truncate at candidate "a"
 // (i.e., "a" is deleted from the ranking and all the candidates below as well
 // "a" is the ID (or NAME) of the candidate, it is NOT its rank number in the ranking of the department.
 
 void DUMMY::Truncate(vector<int> &S, int a){
-	int rank = indexInRankings(S, a);
 	S.erase(S.begin()+indexInRankings(S,a),S.end());
-	/*
-	 if (rank>-1) {
-	 if (S.size()>rank) {
-	 }
-	 }
-	 */
 }
 
 
@@ -114,35 +104,44 @@ void DUMMY::Truncate(vector<int> &S, int a){
 //
 
 
-int DUMMY::dfs(int a) {
+int DUMMY::dfs(vector<vector<int> > rankings, int a, vector<int> candidates, vector<vector<int> > edge, vector<int> &matching_candidate, vector<int> &matching_department, vector<int> &visited) {
 	if(a<0) return(1);
 	if(visited[a]) return(0);
 	visited[a]=1;
 	int i;
 	for(i=0;i<rankings.size();i++) if(edge[a][i]) //* see remark
 	{
-		if(dfs(matching_department[i]))
+		if(dfs(rankings, matching_department[i], candidates, edge, matching_candidate, matching_department, visited))
 		{
-			matching_candidate[a]=i;matching_department[i]=a;
+			matching_candidate[a]=i;
+			matching_department[i]=a;
 			return(1);
 		}
 	}
 	return(0);
 }
 
-int DUMMY::dfsExp(int a) {
-	visited.resize(Candidates.size());
-	int i;
-	for(i=0;i<Candidates.size();i++) visited[i]=0;
-	return dfs(a);
+int DUMMY::dfsExp(vector<vector<int> > rankings, int a, vector<int> candidates, vector<vector<int> > edge, vector<int> &matching_candidate, vector<int> &matching_department) {
+	
+	//cout << "hello\n";
+  vector<int> visited;
+	visited.resize(candidates.size());
+	for(int i = 0 ; i <candidates.size() ; i++) {
+			visited[i]=0;
+	}
+	//cout << "Go for dfs...\n";
+	return dfs(rankings, a, candidates, edge, matching_candidate, matching_department, visited);
 }
 
-int DUMMY::bipMatch()
+int DUMMY::bipMatch(vector<vector<int> > rankings, vector<int> candidates, vector<vector<int> > edge, vector<int> &matching_candidate, vector<int> &matching_department)
 {
 	int i;
 	int ans=0;
-	for(i=0;i<Candidates.size();i++) {
-		if(matching_candidate[i]<0) ans+=dfsExp(i);
+	for(i = 0 ; i < candidates.size() ; i++) {
+		if(matching_candidate[i]<0) {
+			//cout << "Candidate " << candidates[i] << " not matched\n";
+				ans+=dfsExp(rankings, i,candidates, edge, matching_candidate, matching_department);
+		}
 	}
 	return(ans);
 }
@@ -173,16 +172,16 @@ int DUMMY::bipMatch()
 
 
 
-void DUMMY::admissibleGraph() {
+vector<vector<int> > DUMMY::admissibleGraph(vector<vector<int> > &rankings, vector<int> &candidates, vector<int> &matching_candidate) {
 	theFunction="admissibleGraph";
 	
 	int i,j;
 	unsigned long stop=1;
 	
 	// First reinitialize the graph
-	edge.clear();
-	edge.resize(Candidates.size());
-	for (int i = 0 ; i < Candidates.size() ; i++) {
+	vector<vector<int> > edge;
+	edge.resize(candidates.size());
+	for (int i = 0 ; i < candidates.size() ; i++) {
 		for (int j = 0 ; j < rankings.size(); j++) {
 			edge[i].push_back(0);
 		}
@@ -191,7 +190,7 @@ void DUMMY::admissibleGraph() {
 	// (the edge is done using the index of ranking[j][1] in Candidates[].)
 	for (j = 0 ; j < rankings.size() ; j++) {
 		if (rankings[j].size()>1) { // so rankings[j][1] = 0, 1, 2, ... => the 1st ranked is a candidate (0, 1, 2, ... is the name of the candidate
-			edge[index(Candidates, rankings[j][1])][j]=1; // edge created between that candidate and that department.
+			edge[index(candidates, rankings[j][1])][j]=1; // edge created between that candidate and that department.
 			// edge[i][j] = 1 => edge between the i-th candidate in Candidates and the j-th position.
 		}
 	}
@@ -200,9 +199,9 @@ void DUMMY::admissibleGraph() {
 	//  For each position, search the highest ranked candidate that is not matched (to that position or to another position).
 	//
 	for (j = 0 ; j < rankings.size(); j++) {
-		stop=rankings[j].size()-1;
+		stop = rankings[j].size()-1;
 		for (int i = 1 ; i < rankings[j].size(); i++) {
-			if (matching_candidate[index(Candidates, rankings[j][i])]==-1) {
+			if (matching_candidate[index(candidates, rankings[j][i])]==-1) {
 				stop=i;
 				break;
 			}
@@ -210,9 +209,10 @@ void DUMMY::admissibleGraph() {
 		// Once that candidate is identified, make an edge between this candidate and the position,
 		// and the same for all better ranked candidate.
 		for (i = 1 ; i < stop+1; i++) {
-			edge[index(Candidates, rankings[j][i])][j]=1;
+			edge[index(candidates, rankings[j][i])][j]=1;
 		}
 	}
+	return edge;
 }
 
 //                                                                      //
@@ -727,6 +727,18 @@ void DUMMY::petitsblocks(vector<vector<int> > &rankingsOfPositions) {
 //////////////////////////////////////////////////////////////////////////
 
 
+void DUMMY::hello(vector<vector<int> > mornign) {
+	for (int i = 0 ; i < mornign.size() ; i++) {
+		for (int j = 0 ; j< mornign[i].size() ; j++) {
+			cout << "Hello = " << mornign[i][j] << " ";
+
+		}
+		cout << "\n";
+		
+	}
+	cout << "\n";
+}
+
 
 
 
@@ -745,13 +757,11 @@ void DUMMY::loadData(std::string dataFile) {
 	//  Reset all variables.
 	//
 	originalRankings.clear();
-	rankings.clear();
 	impossibles.clear();
-	edge.clear();
+	vector<int> Candidates;
+	vector<int> Positions;
 	Candidates.clear();
 	Positions.clear();
-	matching_candidate.clear();
-	matching_department.clear();
 	OpePostes.clear();
 	for (int i = 0 ; i < 20 ; i++) {
 		TempRanking[i]=-1;
@@ -759,7 +769,6 @@ void DUMMY::loadData(std::string dataFile) {
 	K.clear();
 	possible_K.clear();
 	selectedIndex.clear();
-	visited.clear();
 	J_0.clear();
 	Gamma_cand.clear();
 	Gamma_dep.clear();
@@ -768,7 +777,6 @@ void DUMMY::loadData(std::string dataFile) {
 	
 	
 	ifstream data_read;
-	
 	
 	//
 	//  Load the file and store it in OpePostes[][]
@@ -984,10 +992,6 @@ void DUMMY::analyzeData() {
 	petitsblocks(originalRankings);
 	
 	
-	
-	
-	
-	
 	//
 	//  Declare impossibles (-1 = don't know, 0 = not impossible, 1 = impossible
 	//
@@ -1003,6 +1007,7 @@ void DUMMY::analyzeData() {
 	//
 	//  Construct set of candidates
 	//
+	/*
 	Candidates.clear();
 	Candidates.resize(0);
 	for (int j = 0 ; j < originalRankings.size() ; j++) {
@@ -1012,6 +1017,7 @@ void DUMMY::analyzeData() {
 			}
 		}
 	}
+	*/
 	
 	int TotalCases=0;
 	for (int j = 0 ; j < originalRankings.size() ; j++) {
@@ -1019,6 +1025,8 @@ void DUMMY::analyzeData() {
 			TotalCases=TotalCases+1;
 		}
 	}
+
+	
 	
 	//
 	//	Find the impossible matches.
@@ -1026,7 +1034,7 @@ void DUMMY::analyzeData() {
 	for (int j = 0 ; j < originalRankings.size() ; j++) {
 		for (int i = 2 ; i < originalRankings[j].size() ; i++) {
 			if (impossibles[j][i]==-1) {
-				checkImpossible(originalRankings[j][i], j);
+				checkImpossible(originalRankings, originalRankings[j][i], j);
 			}
 		}
 	}
@@ -1043,35 +1051,10 @@ void DUMMY::analyzeData() {
 		}
 	}
 	
-	/////////////////////////////////////////////
-	//  Count number of positions solved
-	int count,counter;
-	int i,j,jj;
-	counter=0;
-	for (j = 0 ; j < originalRankings.size() ; j++) {
-		if (originalRankings[j].size()==2) {
-			// There are just 2 entries in originalRankings[j]:
-			// originalRankings[j][0] is the position ID and originalRankings[j][1] is the candidate ranked 1st.
-			count=0;
-			// Now check that originalRankings[j][1] is ranked only once.
-			for (jj = 0 ; jj < originalRankings.size() ; jj++) {
-				for (i = 1 ; i < originalRankings[jj].size() ; i++) {
-					if (originalRankings[jj][i]==originalRankings[j][1]) {
-						count=count+1;
-					}
-				}
-			}
-			if (count==1) {
-				// originalRankings[j][1] only ranked once, so he/she gets that position
-				// => one position solved.
-				counter=counter+1;
-			}
-		}
-	}
-	cout << "First run of impossible matches: " << counter << " positions solved out of " << originalRankings.size() << " (" << 100*((float)counter/(float)originalRankings.size())  << "%)\n";
+	cout << "First run of impossible matches: " << marketCleared(originalRankings) << " positions solved out of " << originalRankings.size() << " (" << 100*((float)(marketCleared(originalRankings))/(float)originalRankings.size())  << "%)\n";
 	
 	output.open ("result.txt", std::ofstream::out | std::ofstream::app);
-	output << counter << " positions solved out of " << originalRankings.size() << " (" << 100*((float)counter/(float)originalRankings.size())  << "%)\n";
+	output << marketCleared(originalRankings) << " positions solved out of " << originalRankings.size() << " (" << 100*((float)(marketCleared(originalRankings))/(float)originalRankings.size())  << "%)\n";
 	output.close();
 	
 	//  Count number of positions solved
@@ -1216,7 +1199,7 @@ void DUMMY::matchingStars() {
 	cout << "Running the combinations\n";
 	
 	while (laCombination < theTotal) {
-		cout << laCombination << "\n";
+		cout << laCombination << "\t";
 		// reset originalRankings using the buffer
 		// reset impossibles[][]
 		
@@ -1234,7 +1217,7 @@ void DUMMY::matchingStars() {
 		for (int j = 0 ; j < originalRankings.size() ; j++) {
 			if (originalRankings[j].size() > 1) {
 				for (int i = 2 ; i < originalRankings[j].size() ; i++) {
-					checkImpossible(originalRankings[j][i], j);
+					checkImpossible(originalRankings, originalRankings[j][i], j);
 				}
 			}
 		}
@@ -1276,9 +1259,9 @@ void DUMMY::matchingStars() {
 		int combination2=0;
 		vector<vector<int>> BUFFER2;
 		copyRankings(originalRankings, BUFFER2);
-		/*
+		
 		while (combination2 < total2-1) {
-			//cout << combination2 << " ";
+			cout << combination2 << " ";
 			copyRankings(BUFFER2,originalRankings);
 			implementStarsChoices(secondChoices, secondStarsChoices);
 			for (int j = 0 ; j < originalRankings.size() ; j++) {
@@ -1292,7 +1275,7 @@ void DUMMY::matchingStars() {
 			for (int j = 0 ; j < originalRankings.size() ; j++) {
 				if (originalRankings[j].size() > 2) {
 					for (int i = 2 ; i < originalRankings[j].size() ; i++) {
-						checkImpossible(originalRankings[j][i], j);
+						checkImpossible(originalRankings, originalRankings[j][i], j);
 					}
 				}
 			}
@@ -1332,7 +1315,8 @@ void DUMMY::matchingStars() {
 					}
 				}
 			}
-			totalSum=totalSum+counter;
+			totalSum=totalSum+marketCleared(originalRankings);
+//			totalSum=totalSum+counter;
 			if (combination2<total2) {
 				nextChoices(secondChoices, secondCapacity);
 			}
@@ -1345,7 +1329,7 @@ void DUMMY::matchingStars() {
 			combination2++;
 			totalNumberCombinations++;
 		}
-		*/
+		
 		
 		//        cout << laCombination << "\tAfter stars: "  << counter << " positions solved out of " << originalRankings.size() << " (" << 100*((float)counter/(float)originalRankings.size())  << "%)\n";
 		if (laCombination<theTotal) {
@@ -1353,7 +1337,7 @@ void DUMMY::matchingStars() {
 		}
 		
 		laCombination++;
-		//cout << "\n";
+		cout << "\n";
 	}
 	
 	float average;
@@ -1392,7 +1376,7 @@ void DUMMY::matchingStars() {
 //                                                                      //
 //                                                                      //
 
-void DUMMY::comprehensiveMatching(){
+void DUMMY::comprehensiveMatching(vector<vector<int> > &rankings, vector<int> &candidates, vector<int> &matching_candidate, vector<int> &matching_department){
 	
 	int keepGoing = 1;
 	int previousNumber = 0;
@@ -1400,23 +1384,43 @@ void DUMMY::comprehensiveMatching(){
 	
 	// Initialize the variables
 	matching_candidate.clear();
-	matching_candidate.resize(Candidates.size());
+	matching_candidate.resize(candidates.size());
+
 	matching_department.clear();
 	matching_department.resize(rankings.size());
 	
-	for (int i = 0 ; i < Candidates.size() ; i++) {
+	for (int i = 0 ; i < candidates.size() ; i++) {
 		matching_candidate[i]=-1;
 	}
 	for (int j = 0 ; j < rankings.size(); j++) {
 		matching_department[j]=-1;
 	}
+	/*
+	cout << "ready to match\n";
+	
+	cout << "Rankings\n";
+	for (int j = 0 ; j < rankings.size() ; j++) {
+		for (int i = 0 ; i < rankings[j].size() ; i++) {
+			cout << rankings[j][i] << "\t";
+		}
+		cout << "\n";
+	}
+	
+	for (int i = 0 ; i < candidates.size() ; i++) {
+		cout << "candidate " <<  candidates[i] << " matched to " <<  matching_candidate[i] << "\n";
+	}
+	for (int j = 0 ; j < rankings.size() ; j++) {
+		cout << "position " << rankings[j][0] << " matched to " << matching_department[j] << "\n";
+	}
+	*/
+	
 	
 	//  Loop to construct a maximum matching.
 	while (keepGoing>0) {
-		admissibleGraph();
-		bipMatch();
+		vector<vector<int> > edge = admissibleGraph(rankings, candidates, matching_candidate);
+		bipMatch(rankings, candidates, edge, matching_candidate, matching_department);
 		count = 0;
-		for (int i = 0 ; i < Candidates.size() ; i++) {
+		for (int i = 0 ; i < candidates.size() ; i++) {
 			if (matching_candidate[i]!=-1) {
 				count=count+1;
 			}
@@ -1451,16 +1455,18 @@ void DUMMY::comprehensiveMatching(){
 //  - candidate i0 only appears in s0's ranking.
 
 
-void DUMMY::simplify_i0(int i0, int s0) {
+vector<vector<int> > DUMMY::simplify_i0(vector<vector<int> > &profile, int i0, int s0) {
 	
-	Candidates.clear();
+	vector<vector<int> > rankings;
+	
+	vector<int> Candidates; // set of candidates that are in rankings
+	vector<int> Positions;
 	Candidates.resize(0);
-	Positions.clear();
 	Positions.resize(0);
 	
-	for (int i = 1 ; i < (indexInRankings(originalRankings[s0], i0)+1) ; i++) {
+	for (int i = 1 ; i < (indexInRankings(profile[s0], i0)+1) ; i++) {
 		// index(i0)+1 to include i0, and nobody after.
-		Candidates.push_back(originalRankings[s0][i]);
+		Candidates.push_back(profile[s0][i]);
 	}
 	Positions.push_back(s0);
 	// so, Positions[0] = s0;
@@ -1478,17 +1484,11 @@ void DUMMY::simplify_i0(int i0, int s0) {
 	
 	for (int i = 0 ; i < Candidates.size() ; i++) {
 		if (Candidates[i]!=i0) {
-			for (int j = 0 ; j < originalRankings.size() ; j++) {
-				if (Candidates[i]==2999) {
-					if (originalRankings[j].size()>10) {
-						cout << "Candidate " << Candidates[i] << ", postes = " << j << "(" << originalRankings[j][0] << "), index = " << index(originalRankings[j], Candidates[i]) << " " << originalRankings.size() << "\n";
-						cout << "Candidate " << Candidates[i] << ", postes = " << j+1 << "(" << originalRankings[j+1][0] << "), index = " << index(originalRankings[j+1], Candidates[i]) << " " << originalRankings.size() << "\n";
-					}
-				}
-				if (index(originalRankings[j], Candidates[i])>0) {
-					for (int ii = 1 ; ii < indexInRankings(originalRankings[j], Candidates[i]) ; ii++) {
-						if (!presentInVector(Candidates, originalRankings[j][ii])) {
-							Candidates.push_back(originalRankings[j][ii]);
+			for (int j = 0 ; j < profile.size() ; j++) {
+				if (index(profile[j], Candidates[i])>0) {
+					for (int ii = 1 ; ii < indexInRankings(profile[j], Candidates[i]) ; ii++) {
+						if (!presentInVector(Candidates, profile[j][ii])) {
+							Candidates.push_back(profile[j][ii]);
 						}
 					}
 					if (!presentInVector(Positions, j)) {
@@ -1499,7 +1499,6 @@ void DUMMY::simplify_i0(int i0, int s0) {
 		}
 	}
 	
-	rankings.clear();
 	rankings.resize(Positions.size());
 	
 	
@@ -1509,7 +1508,7 @@ void DUMMY::simplify_i0(int i0, int s0) {
 	
 	for (int j = 0 ; j < Positions.size() ; j++) {
 		rankings[j].resize(0);
-		rankings[j].push_back(originalRankings[Positions[j]][0]);
+		rankings[j].push_back(profile[Positions[j]][0]);
 		//
 		//	The 3rd entry in Positions/rankings is the 17th position in originalRankings[], whose name is 84:
 		// rankings[3][0] = 17, originalRankings[17][0] = 84
@@ -1517,15 +1516,15 @@ void DUMMY::simplify_i0(int i0, int s0) {
 		//	Next we fill rankings[j][1], rankings[j][2], etc, but only with candidates in Candidates[].
 		//	If j != 0 (it's not j0, then we skip i0
 		//	If j=0 we don't skip i0.
-		for (int i = 1 ; i < originalRankings[Positions[j]].size(); i++) {
-			if (originalRankings[Positions[j]][i]!=i0) {
-				if (presentInVector(Candidates, originalRankings[Positions[j]][i])) {
-					rankings[j].push_back(originalRankings[Positions[j]][i]);
+		for (int i = 1 ; i < profile[Positions[j]].size(); i++) {
+			if (profile[Positions[j]][i]!=i0) {
+				if (presentInVector(Candidates, profile[Positions[j]][i])) {
+					rankings[j].push_back(profile[Positions[j]][i]);
 				}
 			} else {
 				if (j==0) {
-					if (presentInVector(Candidates, originalRankings[Positions[j]][i])) {
-						rankings[j].push_back(originalRankings[Positions[j]][i]);
+					if (presentInVector(Candidates, profile[Positions[j]][i])) {
+						rankings[j].push_back(profile[Positions[j]][i]);
 					}
 				}
 			}
@@ -1541,6 +1540,8 @@ void DUMMY::simplify_i0(int i0, int s0) {
 	if ((i0Index+1)<rankings[0].size()) {
 		Truncate(rankings[0], rankings[0][i0Index+1]);
 	}
+	
+	return rankings;
 }
 
 
@@ -1558,13 +1559,13 @@ void DUMMY::simplify_i0(int i0, int s0) {
 //                                                                      //
 //                                                                      //
 
-void DUMMY::checkComprehensiveness(string step){
-	
+void DUMMY::checkComprehensiveness(vector<vector<int> > &rankings, vector<int> &candidates, string step){
+	/*
 	for (int j = 0 ; j < rankings.size(); j++) {
 		for (int i = 2 ; i < rankings[j].size() ; i++) {
-			if (matching_candidate[index(Candidates,rankings[j][i])]==j) {
+			if (matching_candidate[index(candidates,rankings[j][i])]==j) {
 				for (int ii = 1 ; ii < i ; ii++) {
-					if (matching_candidate[index(Candidates,rankings[j][ii])]==-1) {
+					if (matching_candidate[index(candidates,rankings[j][ii])]==-1) {
 						if (step=="loop") {
 							if (presentInVector(Gamma_cand, rankings[j][ii])) {
 								cout << "\n\n\n ERROR NOT COMPREHENSIVE --- ";
@@ -1582,7 +1583,7 @@ void DUMMY::checkComprehensiveness(string step){
 			}
 		}
 	}
-	
+	 */
 }
 
 //                                                                      //
@@ -1600,68 +1601,34 @@ void DUMMY::checkComprehensiveness(string step){
 //                                                                      //
 
 
-void DUMMY::checkImpossible(int i0, int s0) {
+void DUMMY::checkImpossible(vector<vector<int> > &profile, int i0, int s0) {
 	
 	// i0 comes from originalRankings[j][i] = name of a candidate
 	// s0 comes from j = index of the deparment in originalRankings[][] (not the name!)
 	
 	int decided = 0;
+	vector<vector<int> > rankings;
+	vector<int> candidates;
+	vector<int> matching_candidate;
+	vector<int> matching_department;
 	
-	simplify_i0(i0, s0);
+	rankings = simplify_i0(profile, i0, s0);
 	
-	/*
-	 if (i0 == 1338) {
-	 if (s0 == 49) {
-	 cout << "\n\nRankings Before\n";
-	 for (int j = 0 ; j < rankings.size() ; j++) {
-	 for (int i = 0 ; i < rankings[j].size() ; i++) {
-	 cout << rankings[j][i] << "\t";
-	 }
-	 cout << "\n";
-	 }
-	 }
-	 }
-	 */
-	petitsblocks(rankings);
-	//simpleBlocks();
-	
-	/*
-	 if (i0 == 1338) {
-	 if (s0 == 49) {
-	 cout << "\n\nRankings After\n";
-	 for (int j = 0 ; j < rankings.size() ; j++) {
-	 for (int i = 0 ; i < rankings[j].size() ; i++) {
-	 cout << rankings[j][i] << "\t";
-	 }
-	 cout << "\n";
-	 }
-	 }
-	 }
-	 */
-	
-	/*
-	 if (indexInRankings(rankings[0], i0)<0) {
-	 cout << "i0 = " << i0 << " disappeared\n";
-	 cout << "s0 = " << s0 << "\n";
-	 cout << "s0 = " << originalRankings[49][0] << "\n";
-	 for (int i = 0 ; i < originalRankings[49].size(); i++) {
-	 cout << originalRankings[49][i] << " ";
-	 }
-	 cout << "\n";
-	 //exit(1);
-	 }
-	 */
-	
-	if (indexInRankings(rankings[0], i0)<0) {
-		impossibles[s0][index(originalRankings[s0], i0)]=1;
-		decided=1;
+	candidates.clear();
+	candidates.resize(0);
+	for (int j = 0 ; j < rankings.size() ; j++) {
+		for (int i = 1 ; i < rankings[j].size() ; i++) {
+			if (!presentInVector(candidates, rankings[j][i])) {
+				candidates.push_back(rankings[j][i]);
+			}
+		}
 	}
 	
 	
+	comprehensiveMatching(rankings, candidates, matching_candidate, matching_department);
+
 	
-	comprehensiveMatching();
-	checkComprehensiveness("Just after simplify()");
-	
+	//checkComprehensiveness(rankings, candidates, "After simplify()");
 	
 	//  Gamma_dep and Gamma_cand are sets of positions and candidates that will
 	//  be use to check whether i0 is an impossible match
@@ -1676,7 +1643,7 @@ void DUMMY::checkImpossible(int i0, int s0) {
 	J_0.clear();
 	J_0.resize(0);
 	
-	if (matching_candidate[index(Candidates, i0)]==0) {
+	if (matching_candidate[index(candidates, i0)]==0) {
 		// so i0 is matched to Positions[0]
 		// but Positions[0] is s0.
 		// so i0 is not an impossible match for s0.
@@ -1690,24 +1657,24 @@ void DUMMY::checkImpossible(int i0, int s0) {
 		// the matching is still comprenhensive in originalRankings[][]
 		// so all the students matched to a position are not impossible for that position
 		
-		for (int i = 0 ; i < Candidates.size() ; i++) {
+		for (int i = 0 ; i < candidates.size() ; i++) {
 			if (matching_candidate[i]!=-1) {
 				// The candidate is matched to a position
-				int theCandidate=Candidates[i];
+				int theCandidate=candidates[i];
 				int thePosition = matching_candidate[i]; // the candidate is matched to the matching_candidate[i]-th position in rankings[][]
 				int indexPosition;
 				int indexCandidate;
-				// Now find the index of that position in originalRankings[][]
-				for (int j = 0 ; j < originalRankings.size() ; j++) {
-					if (originalRankings[j][0]==rankings[thePosition][0]) {
+				// Now find the index of that position in profile[][]
+				for (int j = 0 ; j < profile.size() ; j++) {
+					if (profile[j][0]==rankings[thePosition][0]) {
 						indexPosition=j;
 						break;
 					}
 				}
-				indexCandidate=index(originalRankings[indexPosition], theCandidate);
+				indexCandidate=index(profile[indexPosition], theCandidate);
 				// The candidate is ranked indexCandidate-th at the position in originalRankings
 				// It may not be the same as in rankings because in rankings we deleted i0 from the rankings (except at s0).
-				if (originalRankings[indexPosition][indexCandidate]!=theCandidate) {
+				if (profile[indexPosition][indexCandidate]!=theCandidate) {
 					cout << "\n\n\nError!!!!!!\n";
 					exit(1);
 				}
@@ -1733,7 +1700,7 @@ void DUMMY::checkImpossible(int i0, int s0) {
 		//////////////////
 		//  build Gamma
 		//
-		buildGamma(J_0,i0);
+		buildGamma(rankings, candidates, J_0,i0, matching_candidate, matching_department);
 	}
 	while (decided==0) {
 		
@@ -1747,7 +1714,7 @@ void DUMMY::checkImpossible(int i0, int s0) {
 		// that we can put in K (candidates ranked 1st for a position are not eligible for K, they are prevalent --- see paper).
 		//
 		
-		buildPossible_K();
+		buildPossible_K(rankings);
 		sizeK = (Gamma_cand.size()-Gamma_dep.size());
 		
 		// There's no the "+1" in the formula of sizeK like in the paper because s0 eliminated from Gamma_dep[].
@@ -1777,14 +1744,14 @@ void DUMMY::checkImpossible(int i0, int s0) {
 					K.push_back(possible_K[selectedIndex[j]]);
 				}
 				// Construct the graph such that only admissible candidates in rankings[][] truncated at K have and edge.
-				graphOfJ();
+				vector<vector<int> > edge = graphOfJ(rankings, candidates);
 				
 				// reinitialize the matching
 				matching_candidate.clear();
-				matching_candidate.resize(Candidates.size());
-				matching_department.clear();
+				matching_candidate.resize(candidates.size());
+				vector<int> matching_department;
 				matching_department.resize(rankings.size());
-				for (int i = 0 ; i < Candidates.size() ; i++) {
+				for (int i = 0 ; i < candidates.size() ; i++) {
 					matching_candidate[i]=-1;
 				}
 				for (int j = 0 ; j < rankings.size() ; j++) {
@@ -1797,18 +1764,17 @@ void DUMMY::checkImpossible(int i0, int s0) {
 				// However, there are no edge between any candidate and s0, but candidates in J_0
 				// must be matched. The number of candidates to be matched is then
 				// all candidates with at least one edge \cup all candidates in J_0
-				
-				
-				bipMatch();
+
+				bipMatch(rankings, candidates, edge, matching_candidate, matching_department);
 				int numberOfMatchedCandidates=0;
-				for (int i = 0 ; i < Candidates.size(); i++) {
+				for (int i = 0 ; i < candidates.size(); i++) {
 					if (matching_candidate[i]!=-1) {
 						numberOfMatchedCandidates++;
 					}
 				}
 				int numberCandidateToBeMatched=0;
 				int hasAnEdge;
-				for (int i = 0 ; i < Candidates.size() ; i++) {
+				for (int i = 0 ; i < candidates.size() ; i++) {
 					hasAnEdge=0;
 					for (int j = 0 ; j < rankings.size() ; j++) {
 						if (edge[i][j]==1) {
@@ -1819,7 +1785,7 @@ void DUMMY::checkImpossible(int i0, int s0) {
 					}
 					if (hasAnEdge==0) {
 						// Check if candidate in J_0;
-						if (presentInVector(J_0, Candidates[i])) {
+						if (presentInVector(J_0, candidates[i])) {
 							numberCandidateToBeMatched=numberCandidateToBeMatched+1;
 						}
 					}
@@ -1831,7 +1797,7 @@ void DUMMY::checkImpossible(int i0, int s0) {
 					//cout << "not impossible";
 					stop=1; // don't need to do another loop (with a different K)
 					decided=1; // The whole thing stop
-					checkComprehensiveness("loop");
+					checkComprehensiveness(rankings, candidates, "loop");
 					break;
 				} else {
 					if ((int) coeff((int) possible_K.size(), (int) sizeK)==(int)loopNumber) {
@@ -1874,7 +1840,7 @@ void DUMMY::checkImpossible(int i0, int s0) {
 //                                                                      //
 //                                                                      //
 
-void DUMMY::buildPossible_K() {
+void DUMMY::buildPossible_K(vector<vector<int> > &rankings) {
 	possible_K.clear();
 	possible_K.resize(0);
 	//  First make possible_K a copy of Gamma_cand
@@ -1925,7 +1891,7 @@ void DUMMY::buildPossible_K() {
 //  to make is (possibly) smaller.
 //
 
-void DUMMY::buildGamma(vector<int> &J_0, int i0) {
+void DUMMY::buildGamma(vector<vector<int> > &rankings, vector<int> &candidates, vector<int> &J_0, int i0, vector<int> &matching_candidate, vector<int> &matching_department) {
 	
 	// Initialize the beast...
 	Gamma_dep.clear();
@@ -1947,10 +1913,10 @@ void DUMMY::buildGamma(vector<int> &J_0, int i0) {
 		Gamma_cand.push_back(J_0[i]);
 	}
 	// Then add all the candidates who are matched to some department.
-	for (int i = 0 ; i < Candidates.size() ; i++) {
+	for (int i = 0 ; i < candidates.size() ; i++) {
 		if (matching_candidate[i]!=-1) {
-			if (!presentInVector(Gamma_cand, Candidates[i])) {
-				Gamma_cand.push_back(Candidates[i]);
+			if (!presentInVector(Gamma_cand, candidates[i])) {
+				Gamma_cand.push_back(candidates[i]);
 			}
 		}
 	}
@@ -2013,7 +1979,7 @@ void DUMMY::buildGamma(vector<int> &J_0, int i0) {
 				if (matching_department[j]!=-1) {
 					// that position is matched to the matching_department[j]-th candidate in Candidates.
 					// The name of that candidate is Candidates[matching_department[j]]
-					if (!presentInVector(Gamma_cand, Candidates[matching_department[j]])) {
+					if (!presentInVector(Gamma_cand, candidates[matching_department[j]])) {
 						// that candidate is not in Gamma_cand, so we add the position to out_dep[]
 						out_dep.push_back(j);
 						found2=1;
@@ -2072,7 +2038,7 @@ void DUMMY::buildGamma(vector<int> &J_0, int i0) {
 		for (int j = 1; j < Gamma_dep.size() ; j++) {
 			for (int i = 1 ; i < rankings[Gamma_dep[j]].size() ; i++) {
 				// pick the candidate ranked i-th
-				int indexOfCandidate = index(Candidates, rankings[Gamma_dep[j]][i]);
+				int indexOfCandidate = index(candidates, rankings[Gamma_dep[j]][i]);
 				// indexOfCandidate is the index in Candidates[] of the candidate
 				if (matching_candidate[indexOfCandidate]==-1) {
 					// The candidate is not matched
@@ -2270,7 +2236,7 @@ signed long int DUMMY::coeff(int n, int k) {
 //
 
 
-void DUMMY::graphOfJ(){
+vector<vector<int> > DUMMY::graphOfJ(vector<vector<int> > &rankings, vector<int> &candidates){
 	
 	// Given rankings[][] and K[]
 	// construct a graph such that it contains only students in Gamma_cand
@@ -2280,9 +2246,10 @@ void DUMMY::graphOfJ(){
 	// We don't want to truncate rankings[][], they might serve for the next subset K.
 	// So we just construct a temporary ranking.
 	
+	vector<vector<int> > edge;
 	edge.clear();
-	edge.resize(Candidates.size());
-	for (int i = 0 ; i < Candidates.size() ; i++) {
+	edge.resize(candidates.size());
+	for (int i = 0 ; i < candidates.size() ; i++) {
 		for (int j = 0 ; j < rankings.size(); j++) {
 			edge[i].push_back(0);
 		}
@@ -2296,13 +2263,14 @@ void DUMMY::graphOfJ(){
 				} else {
 					if (presentInVector(Gamma_cand, rankings[j][i])) {
 						int theCandidate;
-						theCandidate=index(Candidates, rankings[j][i]);
+						theCandidate=index(candidates, rankings[j][i]);
 						edge[theCandidate][j]=1;
 					}
 				}
 			}
 		}
 	}
+	return edge;
 }
 
 
@@ -2473,6 +2441,49 @@ void DUMMY::getStars(vector<int> &theStars, vector<vector<int>> &theirChoices) {
 }
 //                                                                      //
 //     Get the stars and their choice list                              //
+//                                                                      //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+//     Count # positions cleared                                        //
+//                                                                      //
+//                                                                      //
+
+int DUMMY::marketCleared(vector<vector<int> > &profile) {
+	int count,counter;
+	counter=0;
+	for (int j = 0 ; j < profile.size() ; j++) {
+		if (profile[j].size()==2) {
+			// There are just 2 entries in originalRankings[j]:
+			// originalRankings[j][0] is the position ID and originalRankings[j][1] is the candidate ranked 1st.
+			count=0;
+			// Now check that originalRankings[j][1] is ranked only once.
+			for (int jj = 0 ; jj < profile.size() ; jj++) {
+				for (int i = 1 ; i < profile[jj].size() ; i++) {
+					if (profile[jj][i]==profile[j][1]) {
+						count=count+1;
+					}
+				}
+			}
+			if (count==1) {
+				// originalRankings[j][1] only ranked once, so he/she gets that position
+				// => one position solved.
+				counter=counter+1;
+			}
+		}
+	}
+	return counter;
+}
+
+
+//                                                                      //
+//     Count # positions cleared                                        //
 //                                                                      //
 //                                                                      //
 //////////////////////////////////////////////////////////////////////////
