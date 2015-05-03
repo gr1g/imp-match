@@ -124,10 +124,10 @@ int DUMMY::dfs(vector<vector<int> > rankings, int a, vector<int> candidates, vec
 int DUMMY::dfsExp(vector<vector<int> > rankings, int a, vector<int> candidates, vector<vector<int> > edge, vector<int> &matching_candidate, vector<int> &matching_department) {
 	
 	//cout << "hello\n";
-  vector<int> visited;
+	vector<int> visited;
 	visited.resize(candidates.size());
 	for(int i = 0 ; i <candidates.size() ; i++) {
-			visited[i]=0;
+		visited[i]=0;
 	}
 	//cout << "Go for dfs...\n";
 	return dfs(rankings, a, candidates, edge, matching_candidate, matching_department, visited);
@@ -140,7 +140,7 @@ int DUMMY::bipMatch(vector<vector<int> > rankings, vector<int> candidates, vecto
 	for(i = 0 ; i < candidates.size() ; i++) {
 		if(matching_candidate[i]<0) {
 			//cout << "Candidate " << candidates[i] << " not matched\n";
-				ans+=dfsExp(rankings, i,candidates, edge, matching_candidate, matching_department);
+			ans+=dfsExp(rankings, i,candidates, edge, matching_candidate, matching_department);
 		}
 	}
 	return(ans);
@@ -727,21 +727,6 @@ void DUMMY::petitsblocks(vector<vector<int> > &rankingsOfPositions) {
 //////////////////////////////////////////////////////////////////////////
 
 
-void DUMMY::hello(vector<vector<int> > mornign) {
-	for (int i = 0 ; i < mornign.size() ; i++) {
-		for (int j = 0 ; j< mornign[i].size() ; j++) {
-			cout << "Hello = " << mornign[i][j] << " ";
-
-		}
-		cout << "\n";
-		
-	}
-	cout << "\n";
-}
-
-
-
-
 //////////////////////////////////////////////////////////////////////////
 //                                                                      //
 //     Load and prepare the data                                        //
@@ -762,18 +747,14 @@ void DUMMY::loadData(std::string dataFile) {
 	vector<int> Positions;
 	Candidates.clear();
 	Positions.clear();
+	vector<vector<int> > OpePostes; // the data from the file
 	OpePostes.clear();
+	int TempRanking[20]; // used to create originalRankings from OpePostes
 	for (int i = 0 ; i < 20 ; i++) {
 		TempRanking[i]=-1;
 	}
-	K.clear();
-	possible_K.clear();
-	selectedIndex.clear();
-	J_0.clear();
-	Gamma_cand.clear();
-	Gamma_dep.clear();
-	sizeK=-1;
-	loopNumber=-1;
+	//Gamma_cand.clear();
+	//Gamma_dep.clear();
 	
 	
 	ifstream data_read;
@@ -986,11 +967,26 @@ void DUMMY::analyzeData() {
 	// first simplify the ranking profile by eliminating
 	// the impossible matches because of simple blocks.
 	
-	
+	vector<int> lesCandidats;
+	lesCandidats.clear();
+	lesCandidats.resize(0);
+	for (int j = 0 ; j < originalRankings.size() ; j++) {
+		for (int i = 1 ; i < originalRankings[j].size() ; i++) {
+			if (!presentInVector(lesCandidats, originalRankings[j][i])) {
+				lesCandidats.push_back(originalRankings[j][i]);
+			}
+		}
+	}
+	cout << "There are " << lesCandidats.size() << " candidats\n";
+	cout << "Thre are " << originalRankings.size() << " positions\n";
+
+	cout << "Ratio = " << (float)lesCandidats.size()/(float)originalRankings.size() << "\n";
 	
 	//simpleBlocks();
 	petitsblocks(originalRankings);
 	
+	
+
 	
 	//
 	//  Declare impossibles (-1 = don't know, 0 = not impossible, 1 = impossible
@@ -1008,16 +1004,16 @@ void DUMMY::analyzeData() {
 	//  Construct set of candidates
 	//
 	/*
-	Candidates.clear();
-	Candidates.resize(0);
-	for (int j = 0 ; j < originalRankings.size() ; j++) {
+	 Candidates.clear();
+	 Candidates.resize(0);
+	 for (int j = 0 ; j < originalRankings.size() ; j++) {
 		for (int i = 1 ; i < originalRankings[j].size() ; i++) {
-			if (!presentInVector(Candidates, originalRankings[j][i])) {
-				Candidates.push_back(originalRankings[j][i]);
-			}
+	 if (!presentInVector(Candidates, originalRankings[j][i])) {
+	 Candidates.push_back(originalRankings[j][i]);
+	 }
 		}
-	}
-	*/
+	 }
+	 */
 	
 	int TotalCases=0;
 	for (int j = 0 ; j < originalRankings.size() ; j++) {
@@ -1025,7 +1021,7 @@ void DUMMY::analyzeData() {
 			TotalCases=TotalCases+1;
 		}
 	}
-
+	
 	
 	
 	//
@@ -1034,7 +1030,7 @@ void DUMMY::analyzeData() {
 	for (int j = 0 ; j < originalRankings.size() ; j++) {
 		for (int i = 2 ; i < originalRankings[j].size() ; i++) {
 			if (impossibles[j][i]==-1) {
-				checkImpossible(originalRankings, originalRankings[j][i], j);
+				//checkImpossible(originalRankings, originalRankings[j][i], j);
 			}
 		}
 	}
@@ -1062,8 +1058,8 @@ void DUMMY::analyzeData() {
 	
 	
 	
-	postAnalysis();
-	matchingStars();  //DO NOT UNQUOTE THIS YET!!!!
+	//postAnalysis();
+	//matchingStars();  //DO NOT UNQUOTE THIS YET!!!!
 	//chains();
 	
 	
@@ -1316,7 +1312,7 @@ void DUMMY::matchingStars() {
 				}
 			}
 			totalSum=totalSum+marketCleared(originalRankings);
-//			totalSum=totalSum+counter;
+			//			totalSum=totalSum+counter;
 			if (combination2<total2) {
 				nextChoices(secondChoices, secondCapacity);
 			}
@@ -1385,7 +1381,7 @@ void DUMMY::comprehensiveMatching(vector<vector<int> > &rankings, vector<int> &c
 	// Initialize the variables
 	matching_candidate.clear();
 	matching_candidate.resize(candidates.size());
-
+	
 	matching_department.clear();
 	matching_department.resize(rankings.size());
 	
@@ -1396,23 +1392,23 @@ void DUMMY::comprehensiveMatching(vector<vector<int> > &rankings, vector<int> &c
 		matching_department[j]=-1;
 	}
 	/*
-	cout << "ready to match\n";
-	
-	cout << "Rankings\n";
-	for (int j = 0 ; j < rankings.size() ; j++) {
+	 cout << "ready to match\n";
+	 
+	 cout << "Rankings\n";
+	 for (int j = 0 ; j < rankings.size() ; j++) {
 		for (int i = 0 ; i < rankings[j].size() ; i++) {
-			cout << rankings[j][i] << "\t";
+	 cout << rankings[j][i] << "\t";
 		}
 		cout << "\n";
-	}
-	
-	for (int i = 0 ; i < candidates.size() ; i++) {
+	 }
+	 
+	 for (int i = 0 ; i < candidates.size() ; i++) {
 		cout << "candidate " <<  candidates[i] << " matched to " <<  matching_candidate[i] << "\n";
-	}
-	for (int j = 0 ; j < rankings.size() ; j++) {
+	 }
+	 for (int j = 0 ; j < rankings.size() ; j++) {
 		cout << "position " << rankings[j][0] << " matched to " << matching_department[j] << "\n";
-	}
-	*/
+	 }
+	 */
 	
 	
 	//  Loop to construct a maximum matching.
@@ -1561,28 +1557,28 @@ vector<vector<int> > DUMMY::simplify_i0(vector<vector<int> > &profile, int i0, i
 
 void DUMMY::checkComprehensiveness(vector<vector<int> > &rankings, vector<int> &candidates, string step){
 	/*
-	for (int j = 0 ; j < rankings.size(); j++) {
+	 for (int j = 0 ; j < rankings.size(); j++) {
 		for (int i = 2 ; i < rankings[j].size() ; i++) {
-			if (matching_candidate[index(candidates,rankings[j][i])]==j) {
-				for (int ii = 1 ; ii < i ; ii++) {
-					if (matching_candidate[index(candidates,rankings[j][ii])]==-1) {
-						if (step=="loop") {
-							if (presentInVector(Gamma_cand, rankings[j][ii])) {
-								cout << "\n\n\n ERROR NOT COMPREHENSIVE --- ";
-								cout << "Step = " << step << "\n\n";
-								exit (1);
-							}
-						} else {
-							cout << "\n\n\n ERROR NOT COMPREHENSIVE --- ";
-							cout << "Step = " << step << "\n\n";
-							exit (1);
-						}
-					}
-				}
-				
-			}
+	 if (matching_candidate[index(candidates,rankings[j][i])]==j) {
+	 for (int ii = 1 ; ii < i ; ii++) {
+	 if (matching_candidate[index(candidates,rankings[j][ii])]==-1) {
+	 if (step=="loop") {
+	 if (presentInVector(Gamma_cand, rankings[j][ii])) {
+	 cout << "\n\n\n ERROR NOT COMPREHENSIVE --- ";
+	 cout << "Step = " << step << "\n\n";
+	 exit (1);
+	 }
+	 } else {
+	 cout << "\n\n\n ERROR NOT COMPREHENSIVE --- ";
+	 cout << "Step = " << step << "\n\n";
+	 exit (1);
+	 }
+	 }
+	 }
+	 
+	 }
 		}
-	}
+	 }
 	 */
 }
 
@@ -1611,6 +1607,16 @@ void DUMMY::checkImpossible(vector<vector<int> > &profile, int i0, int s0) {
 	vector<int> candidates;
 	vector<int> matching_candidate;
 	vector<int> matching_department;
+	vector<int> J_0;
+	vector<int> K;  // set of students used for the truncation (see definition of a block in the paper)
+	vector<int> possible_K; // sets of students who can be in K
+	vector<int> selectedIndex; // used to select a set K in possible_K
+	K.clear();
+	possible_K.clear();
+	selectedIndex.clear();
+	unsigned long sizeK;
+	sizeK=-1;
+
 	
 	rankings = simplify_i0(profile, i0, s0);
 	
@@ -1626,7 +1632,7 @@ void DUMMY::checkImpossible(vector<vector<int> > &profile, int i0, int s0) {
 	
 	
 	comprehensiveMatching(rankings, candidates, matching_candidate, matching_department);
-
+	
 	
 	//checkComprehensiveness(rankings, candidates, "After simplify()");
 	
@@ -1636,10 +1642,12 @@ void DUMMY::checkImpossible(vector<vector<int> > &profile, int i0, int s0) {
 	//  Gamma_dep is the set of acceptable positions for candidates in Gamma_cand
 	//
 	
-	Gamma_dep.clear();
-	Gamma_dep.resize(0);
-	Gamma_cand.clear();
-	Gamma_cand.resize(0);
+	/*
+	 Gamma_dep.clear();
+	 Gamma_dep.resize(0);
+	 Gamma_cand.clear();
+	 Gamma_cand.resize(0);
+	 */
 	J_0.clear();
 	J_0.resize(0);
 	
@@ -1681,9 +1689,13 @@ void DUMMY::checkImpossible(vector<vector<int> > &profile, int i0, int s0) {
 				impossibles[indexPosition][indexCandidate]=0;
 			}
 		}
-	}
-	if (decided==0) {
+	} else {
+		
 		// i0 is not matched to s0 => don't know yet if impossible.
+		vector<int> Gamma_cand; // The set that is (or not) a block ($\mathbf{J}$ in the proof, see paper)
+		Gamma_cand.clear();
+		vector<int> Gamma_dep;
+		Gamma_dep.clear();
 		
 		//////////////////
 		//  build J_0
@@ -1700,128 +1712,132 @@ void DUMMY::checkImpossible(vector<vector<int> > &profile, int i0, int s0) {
 		//////////////////
 		//  build Gamma
 		//
-		buildGamma(rankings, candidates, J_0,i0, matching_candidate, matching_department);
-	}
-	while (decided==0) {
 		
+		buildGamma(rankings, candidates, i0, matching_candidate, matching_department, J_0, Gamma_dep, Gamma_cand);
 		if (Gamma_dep.size()>Gamma_cand.size()) {
 			cout << "Error: Gamma dep > Gamma_cand ";
 			exit(1);
 		}
 		
-		// we'll need to truncate at some set K
-		// the vector possible_K[] contains all the candidates
-		// that we can put in K (candidates ranked 1st for a position are not eligible for K, they are prevalent --- see paper).
-		//
-		
-		buildPossible_K(rankings);
-		sizeK = (Gamma_cand.size()-Gamma_dep.size());
-		
-		// There's no the "+1" in the formula of sizeK like in the paper because s0 eliminated from Gamma_dep[].
-		// (In the paper, s0 is part of Gamma_dep[] so we need (in the paper) to add +1)
-		// (in the paper departments have capacities, but here capacities are all 1 for each position.
-		
-		if (possible_K.size()<1) {
-			// K is necessarily empty, so i0 is an impossible match.
-			impossibles[s0][index(originalRankings[s0], i0)]=1;
-			break;
-		}
-		if (possible_K.size()<sizeK) {
-			// In this case the 2nd condition of the characterization of a block has no bite
-			// The set Gamma_cand satisfies the 1st condition, so i0 is an impossible match for s0
-			impossibles[s0][index(originalRankings[s0], i0)]=1;
-			break;
-		} else {
-			loopNumber = 1;
-			int stop = 0;
-			while (stop == 0) {
-				// we stop when we find either a maximum matching at the truncation for some K
-				// or we have considered all possible sets K.
-				K.clear();
-				K.resize(0);
-				// construct the set K
-				for (int j = 0 ; j < sizeK ; j++) {
-					K.push_back(possible_K[selectedIndex[j]]);
-				}
-				// Construct the graph such that only admissible candidates in rankings[][] truncated at K have and edge.
-				vector<vector<int> > edge = graphOfJ(rankings, candidates);
-				
-				// reinitialize the matching
-				matching_candidate.clear();
-				matching_candidate.resize(candidates.size());
-				vector<int> matching_department;
-				matching_department.resize(rankings.size());
-				for (int i = 0 ; i < candidates.size() ; i++) {
-					matching_candidate[i]=-1;
-				}
-				for (int j = 0 ; j < rankings.size() ; j++) {
-					matching_department[j]=-1;
-				}
-				
-				// find a maximum matching and count how many students are eligible
-				// The function graphOfJ() reconstructed the vector Candidates[], it now contains only
-				// admissible candidates
-				// However, there are no edge between any candidate and s0, but candidates in J_0
-				// must be matched. The number of candidates to be matched is then
-				// all candidates with at least one edge \cup all candidates in J_0
+			// we'll need to truncate at some set K
+			// the vector possible_K[] contains all the candidates
+			// that we can put in K (candidates ranked 1st for a position are not eligible for K, they are prevalent --- see paper).
+			//
+			buildPossible_K(Gamma_cand, rankings, J_0, possible_K);
+			//
+			//  selectedIndex[] will serve to select a certain number of candidates from the set possible_K
+			//
+			selectedIndex.clear();
+			selectedIndex.resize(0);
+			for (int i = 0 ; i < possible_K.size() ; i++) {
+				selectedIndex.push_back(i);
+			}
 
-				bipMatch(rankings, candidates, edge, matching_candidate, matching_department);
-				int numberOfMatchedCandidates=0;
-				for (int i = 0 ; i < candidates.size(); i++) {
-					if (matching_candidate[i]!=-1) {
-						numberOfMatchedCandidates++;
+			
+			sizeK = (Gamma_cand.size()-Gamma_dep.size());
+			
+			// There's no the "+1" in the formula of sizeK like in the paper because s0 eliminated from Gamma_dep[].
+			// (In the paper, s0 is part of Gamma_dep[] so we need (in the paper) to add +1)
+			// (in the paper departments have capacities, but here capacities are all 1 for each position.
+			
+			if (possible_K.size()<1) {
+				// K is necessarily empty, so i0 is an impossible match.
+				impossibles[s0][index(originalRankings[s0], i0)]=1;
+			} else if (possible_K.size()<sizeK) {
+				// In this case the 2nd condition of the characterization of a block has no bite
+				// The set Gamma_cand satisfies the 1st condition, so i0 is an impossible match for s0
+				impossibles[s0][index(originalRankings[s0], i0)]=1;
+			} else {
+				signed long int loopNumber = 1;
+				int stop = 0;
+				while (stop == 0) {
+					// we stop when we find either a maximum matching at the truncation for some K
+					// or we have considered all possible sets K.
+					K.clear();
+					K.resize(0);
+					// construct the set K
+					for (int j = 0 ; j < sizeK ; j++) {
+						K.push_back(possible_K[selectedIndex[j]]);
 					}
-				}
-				int numberCandidateToBeMatched=0;
-				int hasAnEdge;
-				for (int i = 0 ; i < candidates.size() ; i++) {
-					hasAnEdge=0;
+					// Construct the graph such that only admissible candidates in rankings[][] truncated at K have and edge.
+					vector<vector<int> > edge = graphOfJ(rankings, candidates, Gamma_cand, Gamma_dep, K);
+					
+					// reinitialize the matching
+					matching_candidate.clear();
+					matching_candidate.resize(candidates.size());
+					vector<int> matching_department;
+					matching_department.resize(rankings.size());
+					for (int i = 0 ; i < candidates.size() ; i++) {
+						matching_candidate[i]=-1;
+					}
 					for (int j = 0 ; j < rankings.size() ; j++) {
-						if (edge[i][j]==1) {
-							numberCandidateToBeMatched=numberCandidateToBeMatched+1;
-							hasAnEdge=1;
-							break;
+						matching_department[j]=-1;
+					}
+					
+					// find a maximum matching and count how many students are eligible
+					// The function graphOfJ() reconstructed the vector Candidates[], it now contains only
+					// admissible candidates
+					// However, there are no edge between any candidate and s0, but candidates in J_0
+					// must be matched. The number of candidates to be matched is then
+					// all candidates with at least one edge \cup all candidates in J_0
+					
+					bipMatch(rankings, candidates, edge, matching_candidate, matching_department);
+					int numberOfMatchedCandidates=0;
+					for (int i = 0 ; i < candidates.size(); i++) {
+						if (matching_candidate[i]!=-1) {
+							numberOfMatchedCandidates++;
 						}
 					}
-					if (hasAnEdge==0) {
-						// Check if candidate in J_0;
-						if (presentInVector(J_0, candidates[i])) {
-							numberCandidateToBeMatched=numberCandidateToBeMatched+1;
-						}
-					}
-				}
-				if (numberOfMatchedCandidates==numberCandidateToBeMatched) {
-					// all admissible candidates are matched. So condition 2 of the definition of a block is violated
-					// i0 is not an impossible match
-					impossibles[s0][index(originalRankings[s0], i0)]=0;
-					//cout << "not impossible";
-					stop=1; // don't need to do another loop (with a different K)
-					decided=1; // The whole thing stop
-					checkComprehensiveness(rankings, candidates, "loop");
-					break;
-				} else {
-					if ((int) coeff((int) possible_K.size(), (int) sizeK)==(int)loopNumber) {
-						// we looked at all possible cases: condition 2 is not violated
-						// i0 is an impossible match for s0.
-						impossibles[s0][indexInRankings(originalRankings[s0], i0)]=1;
-						// Gamma_cand is a block. Check if the candidates below i0 are in Gamma_cand. If not, Gamma_cand is also a block for them.
-						for (int ii = indexInRankings(originalRankings[s0], i0)+1 ; ii < originalRankings[s0].size() ; ii++) {
-							if (!presentInVector(Gamma_cand, originalRankings[s0][ii])) {
-								impossibles[s0][ii]=1;
+					int numberCandidateToBeMatched=0;
+					int hasAnEdge;
+					for (int i = 0 ; i < candidates.size() ; i++) {
+						hasAnEdge=0;
+						for (int j = 0 ; j < rankings.size() ; j++) {
+							if (edge[i][j]==1) {
+								numberCandidateToBeMatched=numberCandidateToBeMatched+1;
+								hasAnEdge=1;
+								break;
 							}
 						}
-						stop=1;
-						decided=1;
+						if (hasAnEdge==0) {
+							// Check if candidate in J_0;
+							if (presentInVector(J_0, candidates[i])) {
+								numberCandidateToBeMatched=numberCandidateToBeMatched+1;
+							}
+						}
+					}
+					if (numberOfMatchedCandidates==numberCandidateToBeMatched) {
+						// all admissible candidates are matched. So condition 2 of the definition of a block is violated
+						// i0 is not an impossible match
+						impossibles[s0][index(originalRankings[s0], i0)]=0;
+						//cout << "not impossible";
+						stop=1; // don't need to do another loop (with a different K)
+						decided=1; // The whole thing stop
+						checkComprehensiveness(rankings, candidates, "loop");
 						break;
 					} else {
-						// need to go for another subset K taken from possible_K
-						next_subset(selectedIndex, (int) possible_K.size(), (int) sizeK);
-						loopNumber++;
-						//cout << "loop number = " << loopNumber << "/" <<  coeff((int) possible_K.size(), (int) sizeK) << "\n";
+						if ((int) coeff((int) possible_K.size(), (int) sizeK)==(int)loopNumber) {
+							// we looked at all possible cases: condition 2 is not violated
+							// i0 is an impossible match for s0.
+							impossibles[s0][indexInRankings(originalRankings[s0], i0)]=1;
+							// Gamma_cand is a block. Check if the candidates below i0 are in Gamma_cand. If not, Gamma_cand is also a block for them.
+							for (int ii = indexInRankings(originalRankings[s0], i0)+1 ; ii < originalRankings[s0].size() ; ii++) {
+								if (!presentInVector(Gamma_cand, originalRankings[s0][ii])) {
+									impossibles[s0][ii]=1;
+								}
+							}
+							stop=1;
+							decided=1;
+							break;
+						} else {
+							// need to go for another subset K taken from possible_K
+							next_subset(selectedIndex, (int) possible_K.size(), (int) sizeK);
+							loopNumber++;
+							//cout << "loop number = " << loopNumber << "/" <<  coeff((int) possible_K.size(), (int) sizeK) << "\n";
+						}
 					}
 				}
 			}
-		}
 	}
 }
 
@@ -1840,11 +1856,11 @@ void DUMMY::checkImpossible(vector<vector<int> > &profile, int i0, int s0) {
 //                                                                      //
 //                                                                      //
 
-void DUMMY::buildPossible_K(vector<vector<int> > &rankings) {
+void DUMMY::buildPossible_K(vector<int> Gamma_cand, vector<vector<int> > rankings, vector<int> J_0, vector<int> &possible_K) {
 	possible_K.clear();
 	possible_K.resize(0);
 	//  First make possible_K a copy of Gamma_cand
-	for (int i = 0 ; i < Gamma_cand.size(); i++) {
+	for (int i = 0 ; i < Gamma_cand.size() ; i++) {
 		possible_K.push_back(Gamma_cand[i]);
 	}
 	// Candidates in J_0 can never be in K.
@@ -1857,15 +1873,6 @@ void DUMMY::buildPossible_K(vector<vector<int> > &rankings) {
 		if (presentInVector(possible_K, rankings[j][1])) {
 			possible_K.erase(possible_K.begin()+(index(possible_K, rankings[j][1])));
 		}
-	}
-	
-	//
-	//  selectedIndex[] will serve to select a certain number of candidates from the set possible_K
-	//
-	selectedIndex.clear();
-	selectedIndex.resize(0);
-	for (int i = 0 ; i < possible_K.size() ; i++) {
-		selectedIndex.push_back(i);
 	}
 }
 
@@ -1891,7 +1898,7 @@ void DUMMY::buildPossible_K(vector<vector<int> > &rankings) {
 //  to make is (possibly) smaller.
 //
 
-void DUMMY::buildGamma(vector<vector<int> > &rankings, vector<int> &candidates, vector<int> &J_0, int i0, vector<int> &matching_candidate, vector<int> &matching_department) {
+void DUMMY::buildGamma(vector<vector<int> > rankings, vector<int> candidates, int i0, vector<int> matching_candidate, vector<int> matching_department, vector<int> &J_0, vector<int> &Gamma_dep, vector<int> &Gamma_cand) {
 	
 	// Initialize the beast...
 	Gamma_dep.clear();
@@ -2236,7 +2243,7 @@ signed long int DUMMY::coeff(int n, int k) {
 //
 
 
-vector<vector<int> > DUMMY::graphOfJ(vector<vector<int> > &rankings, vector<int> &candidates){
+vector<vector<int> > DUMMY::graphOfJ(vector<vector<int> > rankings, vector<int> candidates, vector<int> Gamma_cand, vector<int> Gamma_dep, vector<int> K){
 	
 	// Given rankings[][] and K[]
 	// construct a graph such that it contains only students in Gamma_cand
