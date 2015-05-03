@@ -49,10 +49,10 @@ public:
 	
 	void buildPossible_K(vector<int> Gamma_cand, vector<vector<int> > rankings, vector<int> J_0, vector<int> &possible_K);
 	vector<vector<int> > admissibleGraph(vector<vector<int> > &rankings,vector<int> &candidates, vector<int> &matchCandidates); // to get a comprehensive matching
-	void checkComprehensiveness(vector<vector<int> > &srankings, vector<int> &candidates, string step);
+	void checkComprehensiveness(vector<vector<int> > &rankings, vector<int> &candidates, string step);
 	void comprehensiveMatching(vector<vector<int> > &rankings, vector<int> &candidates, vector<int> &matching_candidate, vector<int> &matching_department); // construct a comprehensive matching
 	vector<vector<int> > simplify_i0(vector<vector<int> > &profile, int i0, int s0); // construct rankings from profile
-	void checkImpossible(vector<vector<int> > &rankings, int i0, int s0); // main function to check a candidate is impossible
+	void checkImpossible(vector<vector<int> > profile, int i0, int s0); // main function to check a candidate is impossible
 	void buildGamma(vector<vector<int> > rankings, vector<int> candidates, int i0, vector<int> matching_candidate, vector<int> matching_department, vector<int> &J_0, vector<int> &Gamma_dep, vector<int> &Gamma_cand); // construct the set Gamma_cand
 	vector<vector<int> > graphOfJ(vector<vector<int> > rankings, vector<int> candidates, vector<int> Gamma_cand, vector<int> Gamma_dep, vector<int> K);    // construct the edge set used to compute a maximum matching (rankings restricted to Gamma_cand, truncated at K)
 	
@@ -65,6 +65,11 @@ public:
 	int marketCleared(vector<vector<int> > &profile);
 	
 	void copyRankings(vector<vector<int> > &source, vector<vector<int> > &copy);
+	
+	int loopK(vector<int> K, vector<vector<int> > rankings, vector<int> candidates, vector<int> Gamma_cand, vector<int> Gamma_dep, vector<int> J_0, int s0, int i0);
+	
+	void notImpossibles(vector<int> candidate, vector<vector<int> > rankings, vector<int> matching_candidate, vector<vector<int> > &impossibles);
+	
 	
 	// Maximum matching functions
 	/*

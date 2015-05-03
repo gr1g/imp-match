@@ -1030,7 +1030,7 @@ void DUMMY::analyzeData() {
 	for (int j = 0 ; j < originalRankings.size() ; j++) {
 		for (int i = 2 ; i < originalRankings[j].size() ; i++) {
 			if (impossibles[j][i]==-1) {
-				//checkImpossible(originalRankings, originalRankings[j][i], j);
+				checkImpossible(originalRankings, originalRankings[j][i], j);
 			}
 		}
 	}
@@ -1597,7 +1597,7 @@ void DUMMY::checkComprehensiveness(vector<vector<int> > &rankings, vector<int> &
 //                                                                      //
 
 
-void DUMMY::checkImpossible(vector<vector<int> > &profile, int i0, int s0) {
+void DUMMY::checkImpossible(vector<vector<int> > profile, int i0, int s0) {
 	
 	// i0 comes from originalRankings[j][i] = name of a candidate
 	// s0 comes from j = index of the deparment in originalRankings[][] (not the name!)
@@ -1665,26 +1665,28 @@ void DUMMY::checkImpossible(vector<vector<int> > &profile, int i0, int s0) {
 		// the matching is still comprenhensive in originalRankings[][]
 		// so all the students matched to a position are not impossible for that position
 		
+		// **************************
+		// ***************************
+		//
+		// notImpossibles(candidates, rankings, matching_candidate, impossibles);
+		// HERE "impossibles" in the function should be the "impossible" from the function "checkImpossible()"
+		//
+		// **************************
+		// ***************************
+		
+		
 		for (int i = 0 ; i < candidates.size() ; i++) {
 			if (matching_candidate[i]!=-1) {
 				// The candidate is matched to a position
-				int theCandidate=candidates[i];
 				int thePosition = matching_candidate[i]; // the candidate is matched to the matching_candidate[i]-th position in rankings[][]
 				int indexPosition;
 				int indexCandidate;
-				// Now find the index of that position in profile[][]
-				for (int j = 0 ; j < profile.size() ; j++) {
-					if (profile[j][0]==rankings[thePosition][0]) {
+				// Now find the index of that position in impossible[][]
+				for (int j = 0 ; j < impossibles.size() ; j++) {
+					if (impossibles[j][0]==rankings[thePosition][0]) {
 						indexPosition=j;
 						break;
 					}
-				}
-				indexCandidate=index(profile[indexPosition], theCandidate);
-				// The candidate is ranked indexCandidate-th at the position in originalRankings
-				// It may not be the same as in rankings because in rankings we deleted i0 from the rankings (except at s0).
-				if (profile[indexPosition][indexCandidate]!=theCandidate) {
-					cout << "\n\n\nError!!!!!!\n";
-					exit(1);
 				}
 				impossibles[indexPosition][indexCandidate]=0;
 			}
@@ -1750,6 +1752,8 @@ void DUMMY::checkImpossible(vector<vector<int> > &profile, int i0, int s0) {
 			} else {
 				signed long int loopNumber = 1;
 				int stop = 0;
+				cout << "Number of combinations, C("<< possible_K.size() << "," << sizeK <<") = " << (int) coeff((int) possible_K.size(), (int) sizeK) << "\n";
+				
 				while (stop == 0) {
 					// we stop when we find either a maximum matching at the truncation for some K
 					// or we have considered all possible sets K.
@@ -1775,8 +1779,6 @@ void DUMMY::checkImpossible(vector<vector<int> > &profile, int i0, int s0) {
 					}
 					
 					// find a maximum matching and count how many students are eligible
-					// The function graphOfJ() reconstructed the vector Candidates[], it now contains only
-					// admissible candidates
 					// However, there are no edge between any candidate and s0, but candidates in J_0
 					// must be matched. The number of candidates to be matched is then
 					// all candidates with at least one edge \cup all candidates in J_0
@@ -1794,7 +1796,7 @@ void DUMMY::checkImpossible(vector<vector<int> > &profile, int i0, int s0) {
 						hasAnEdge=0;
 						for (int j = 0 ; j < rankings.size() ; j++) {
 							if (edge[i][j]==1) {
-								numberCandidateToBeMatched=numberCandidateToBeMatched+1;
+								numberCandidateToBeMatched++;
 								hasAnEdge=1;
 								break;
 							}
@@ -1812,7 +1814,6 @@ void DUMMY::checkImpossible(vector<vector<int> > &profile, int i0, int s0) {
 						impossibles[s0][index(originalRankings[s0], i0)]=0;
 						//cout << "not impossible";
 						stop=1; // don't need to do another loop (with a different K)
-						decided=1; // The whole thing stop
 						checkComprehensiveness(rankings, candidates, "loop");
 						break;
 					} else {
@@ -1827,7 +1828,6 @@ void DUMMY::checkImpossible(vector<vector<int> > &profile, int i0, int s0) {
 								}
 							}
 							stop=1;
-							decided=1;
 							break;
 						} else {
 							// need to go for another subset K taken from possible_K
@@ -1837,6 +1837,7 @@ void DUMMY::checkImpossible(vector<vector<int> > &profile, int i0, int s0) {
 						}
 					}
 				}
+				
 			}
 	}
 }
@@ -1846,6 +1847,124 @@ void DUMMY::checkImpossible(vector<vector<int> > &profile, int i0, int s0) {
 //                                                                      //
 //                                                                      //
 //////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+//     Use comprehensive matching to declare notImpossibles             //
+//                                                                      //
+//                                                                      //
+
+void DUMMY::notImpossibles(vector<int> candidates, vector<vector<int> > rankings, vector<int> matching_candidate, vector<vector<int> > &impossibles) {
+	for (int i = 0 ; i < candidates.size() ; i++) {
+		if (matching_candidate[i]!=-1) {
+			// The candidate is matched to a position
+			int thePosition = matching_candidate[i]; // the candidate is matched to the matching_candidate[i]-th position in rankings[][]
+			int indexPosition;
+			int indexCandidate;
+			// Now find the index of that position in impossible[][]
+			for (int j = 0 ; j < impossibles.size() ; j++) {
+				if (impossibles[j][0]==rankings[thePosition][0]) {
+					indexPosition=j;
+					break;
+				}
+			}
+			impossibles[indexPosition][indexCandidate]=0;
+		}
+	}
+
+}
+
+//                                                                      //
+//     Use comprehensive matching to declare notImpossibles             //
+//                                                                      //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+//     maximum matching for some K and check it													//
+//                                                                      //
+//                                                                      //
+
+
+int DUMMY::loopK(vector<int> K, vector<vector<int> > rankings, vector<int> candidates, vector<int> Gamma_cand, vector<int> Gamma_dep, vector<int> J_0, int s0, int i0) {
+	
+	int stop = 0;
+	// we stop when we find either a maximum matching at the truncation for some K
+	// or we have considered all possible sets K.
+	
+	// Construct the graph such that only admissible candidates in rankings[][] truncated at K have and edge.
+	vector<vector<int> > edge = graphOfJ(rankings, candidates, Gamma_cand, Gamma_dep, K);
+	
+	// reinitialize the matching
+	vector<int> matching_candidate;
+	matching_candidate.resize(candidates.size());
+	vector<int> matching_department;
+	matching_department.resize(rankings.size());
+	for (int i = 0 ; i < candidates.size() ; i++) {
+		matching_candidate[i]=-1;
+	}
+	for (int j = 0 ; j < rankings.size() ; j++) {
+		matching_department[j]=-1;
+	}
+	
+	// find a maximum matching and count how many students are eligible
+	// However, there are no edge between any candidate and s0, but candidates in J_0
+	// must be matched. The number of candidates to be matched is then
+	// all candidates with at least one edge \cup all candidates in J_0
+	
+	bipMatch(rankings, candidates, edge, matching_candidate, matching_department);
+	int numberOfMatchedCandidates=0;
+	for (int i = 0 ; i < candidates.size(); i++) {
+		if (matching_candidate[i]!=-1) {
+			numberOfMatchedCandidates++;
+		}
+	}
+	int numberCandidateToBeMatched=0;
+	int hasAnEdge;
+	for (int i = 0 ; i < candidates.size() ; i++) {
+		hasAnEdge=0;
+		for (int j = 0 ; j < rankings.size() ; j++) {
+			if (edge[i][j]==1) {
+				numberCandidateToBeMatched++;
+				hasAnEdge=1;
+				break;
+			}
+		}
+		if (hasAnEdge==0) {
+			// Check if candidate in J_0;
+			if (presentInVector(J_0, candidates[i])) {
+				numberCandidateToBeMatched=numberCandidateToBeMatched+1;
+			}
+		}
+	}
+	if (numberOfMatchedCandidates==numberCandidateToBeMatched) {
+		// all admissible candidates are matched. So condition 2 of the definition of a block is violated
+		// i0 is not an impossible match
+		impossibles[s0][index(originalRankings[s0], i0)]=0;
+		//cout << "not impossible";
+		stop=1; // don't need to do another loop (with a different K)
+		checkComprehensiveness(rankings, candidates, "loop");
+		//
+		//
+		
+		
+		
+	}
+	return stop;
+}
+
+
+
+
+//                                                                      //
+//     Check if i0 is an impossible match for s0                        //
+//                                                                      //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+
 
 
 
