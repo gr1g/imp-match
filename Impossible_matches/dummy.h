@@ -56,9 +56,9 @@ public:
 	void buildGamma(vector<vector<int> > rankings, vector<int> candidates, int i0, vector<int> matching_candidate, vector<int> matching_department, vector<int> &J_0, vector<int> &Gamma_dep, vector<int> &Gamma_cand); // construct the set Gamma_cand
 	vector<vector<int> > graphOfJ(vector<vector<int> > rankings, vector<int> candidates, vector<int> Gamma_cand, vector<int> Gamma_dep, vector<int> K);    // construct the edge set used to compute a maximum matching (rankings restricted to Gamma_cand, truncated at K)
 	
-	void matchingStars();   // assign candidates ranked only 1st (and at least twice) to a position.
-	void getStars(vector<int> &theStars, vector<vector<int>> &theirChoices);
-	void implementStarsChoices(vector<int> &chosenPositions, vector<vector<int>> &choiceSet);
+	void matchingStars(vector<vector<int> > profile, int dim);   // assign candidates ranked only 1st (and at least twice) to a position.
+	void getStars(vector<int> &theStars, vector<vector<int> > &theirChoices);
+	void implementStarsChoices(vector<int> &chosenPositions, vector<vector<int> > &choiceSet);
 	
 	void nextChoices(vector<int> &theSet, vector<int> &capacity);
 	
@@ -104,7 +104,7 @@ public:
 	//vector<int> Gamma_cand; // The set that is (or not) a block ($\mathbf{J}$ in the proof, see paper)
 	//vector<int> Gamma_dep; // Acceptable positions for candidates in Gamma_cand
 	
-	vector<vector<int>> hired;
+	vector<vector<int> > hired;
 	
 	
 	// Additional functions

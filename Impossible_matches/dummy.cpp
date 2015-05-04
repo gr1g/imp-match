@@ -1144,8 +1144,10 @@ void DUMMY::postAnalysis() {
 //                                                                      //
 //                                                                      //
 
+// This is the "findAll" that needs to be recursive
+// Remember: get profile and dim as inputs
 
-void DUMMY::matchingStars() {
+void DUMMY::matchingStars(vector<vector<int> > profile, int dim) {
 	theFunction="matchingStars";
 	
 	int numberCombinations;
@@ -1161,13 +1163,10 @@ void DUMMY::matchingStars() {
 	choices.resize(0);
 	
 	int totalSum = 0;
-	int min = (int)(originalRankings.size());
+	int min = (int)(profile.size());
 	int max = 0;
 	
 	// copy originalRankings[] into a buffer.
-	vector<vector<int> > BUFFERoriginalRankings;
-	
-	copyRankings(originalRankings, BUFFERoriginalRankings);
 	getStars(marketStars, starsChoiceSet);
 	int theTotal=1;
 	for (int i = 0 ; i < starsChoiceSet.size() ; i++) {
@@ -1199,9 +1198,8 @@ void DUMMY::matchingStars() {
 		// reset originalRankings using the buffer
 		// reset impossibles[][]
 		
-		copyRankings(BUFFERoriginalRankings, originalRankings);
-		for (int j = 0 ; j < originalRankings.size() ; j++) {
-			if (originalRankings[j].size()>20) {
+		for (int j = 0 ; j < profile.size() ; j++) {
+			if (profile[j].size()>20) {
 				cout << "too big!\n";
 				exit(1);
 			}
@@ -1210,18 +1208,18 @@ void DUMMY::matchingStars() {
 		
 		implementStarsChoices(theChoices, starsChoiceSet);
 		// Find the impossible matches
-		for (int j = 0 ; j < originalRankings.size() ; j++) {
-			if (originalRankings[j].size() > 1) {
-				for (int i = 2 ; i < originalRankings[j].size() ; i++) {
-					checkImpossible(originalRankings, originalRankings[j][i], j);
+		for (int j = 0 ; j < profile.size() ; j++) {
+			if (profile[j].size() > 1) {
+				for (int i = 2 ; i < profile[j].size() ; i++) {
+					checkImpossible(profile, profile[j][i], j);
 				}
 			}
 		}
 		
-		
+		// TODO: sDsadsa
 		// Eliminates the impossible matches
-		for (int j = 0 ; j < originalRankings.size() ; j++) {
-			for (int i = 2 ; i < originalRankings[j].size() ; i++) {
+		for (int j = 0 ; j < profile.size() ; j++) {
+			for (int i = 2 ; i < profile[j].size() ; i++) {
 				if (impossibles[j][i]==1) {
 					originalRankings[j].erase(originalRankings[j].begin()+i);
 					impossibles[j].erase(impossibles[j].begin()+i);
@@ -1229,7 +1227,7 @@ void DUMMY::matchingStars() {
 				}
 			}
 		}
-		vector<vector<int>> secondStarsChoices;
+		vector<vector<int> > secondStarsChoices;
 		vector<int> secondStars;
 		secondStars.clear();
 		secondStarsChoices.clear();
@@ -1253,12 +1251,8 @@ void DUMMY::matchingStars() {
 			total2=total2*(int)(secondStarsChoices[i].size());
 		}
 		int combination2=0;
-		vector<vector<int>> BUFFER2;
-		copyRankings(originalRankings, BUFFER2);
-		
 		while (combination2 < total2-1) {
 			cout << combination2 << " ";
-			copyRankings(BUFFER2,originalRankings);
 			implementStarsChoices(secondChoices, secondStarsChoices);
 			for (int j = 0 ; j < originalRankings.size() ; j++) {
 				if (originalRankings[j].size()>10) {
@@ -1327,7 +1321,7 @@ void DUMMY::matchingStars() {
 		}
 		
 		
-		//        cout << laCombination << "\tAfter stars: "  << counter << " positions solved out of " << originalRankings.size() << " (" << 100*((float)counter/(float)originalRankings.size())  << "%)\n";
+		// cout << laCombination << "\tAfter stars: "  << counter << " positions solved out of " << originalRankings.size() << " (" << 100*((float)counter/(float)originalRankings.size())  << "%)\n";
 		if (laCombination<theTotal) {
 			nextChoices(theChoices, capacity);
 		}
@@ -2524,7 +2518,7 @@ void DUMMY::copyRankings(vector<vector<int> > &source, vector<vector<int> > &cop
 //                                                                      //
 //                                                                      //
 
-void DUMMY::getStars(vector<int> &theStars, vector<vector<int>> &theirChoices) {
+void DUMMY::getStars(vector<int> &theStars, vector<vector<int> > &theirChoices) {
 	
 	theStars.clear();
 	theStars.resize(0);
@@ -2623,7 +2617,7 @@ int DUMMY::marketCleared(vector<vector<int> > &profile) {
 //                                                                      //
 
 
-void DUMMY::implementStarsChoices(vector<int> &choice, vector<vector<int>> &choiceSet) {
+void DUMMY::implementStarsChoices(vector<int> &choice, vector<vector<int> > &choiceSet) {
 	
 	// Implement choices
 	for (int i = 0 ; i < choice.size() ; i++) {
