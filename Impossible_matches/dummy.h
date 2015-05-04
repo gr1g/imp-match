@@ -62,6 +62,8 @@ public:
 	
 	void nextChoices(vector<int> &theSet, vector<int> &capacity);
 	
+	int ffgfgfhfdhf;
+
 	int marketCleared(vector<vector<int> > &profile);
 	
 	void copyRankings(vector<vector<int> > &source, vector<vector<int> > &copy);

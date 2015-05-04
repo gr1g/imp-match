@@ -1590,7 +1590,7 @@ void DUMMY::checkComprehensiveness(vector<vector<int> > &rankings, vector<int> &
 //                                                                      //
 //                                                                      //
 
-
+//
 void DUMMY::checkImpossible(vector<vector<int> > profile, int i0, int s0) {
 	
 	// i0 comes from originalRankings[j][i] = name of a candidate
