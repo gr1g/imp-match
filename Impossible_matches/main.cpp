@@ -37,7 +37,7 @@ int main(int argc, const char * argv[])
 	
 	
 	
-	for (year_index = 1 ; year_index < 12 ; year_index++) {
+	for (year_index = 3 ; year_index < 12 ; year_index++) {
 		if (year_index == 0) {
 			filename = "1999-data.txt";
 		}
@@ -98,9 +98,9 @@ int main(int argc, const char * argv[])
 		
 		DUMMY dummy;
 		dummy.loadData(filename.c_str());
-		dummy.analyzeData();
-		
-		
+		dummy.stepOne();
+		dummy.stepTwo();
+		dummy.postAnalysis();
 		
 		
 		(void) time(&t2);
