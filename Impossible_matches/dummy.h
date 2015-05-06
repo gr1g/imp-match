@@ -20,7 +20,6 @@ using namespace std;
 
 
 class DUMMY {
-private:
 	
 public:
 	
@@ -45,15 +44,15 @@ public:
 	
 	void simpleBlocks();    // calls in a loop rankedOnce() and RankedMultiple(): to eliminate easy cases of impossible matches (see web appendix)
 	void petitsblocks(vector<vector<int> > &rankingsOfPositions);
-	//void buildPossible_K(vector<vector<int> > &profile);
+	vector<vector<int> > simplify_i0(vector<vector<int> > profile, int i0, int s0); // construct rankings from profile
 	
-	void buildPossible_K(vector<int> Gamma_cand, vector<vector<int> > rankings, vector<int> J_0, vector<int> &possible_K);
-	vector<vector<int> > admissibleGraph(vector<vector<int> > &rankings,vector<int> &candidates, vector<int> &matchCandidates); // to get a comprehensive matching
-	void checkComprehensiveness(vector<vector<int> > &rankings, vector<int> &candidates, string step);
 	void comprehensiveMatching(vector<vector<int> > &rankings, vector<int> &candidates, vector<int> &matching_candidate, vector<int> &matching_department); // construct a comprehensive matching
-	vector<vector<int> > simplify_i0(vector<vector<int> > &profile, int i0, int s0); // construct rankings from profile
+	void checkComprehensiveness(vector<vector<int> > rankings, vector<int> candidates, string step);
 	void checkImpossible(vector<vector<int> > profile, int i0, int s0, vector<vector<int> > &impossible); // main function to check a candidate is impossible
+
+	vector<int> buildPossible_K(vector<int> Gamma_cand, vector<vector<int> > rankings, vector<int> J_0);
 	void buildGamma(vector<vector<int> > rankings, vector<int> candidates, int i0, vector<int> matching_candidate, vector<int> matching_department, vector<int> &J_0, vector<int> &Gamma_dep, vector<int> &Gamma_cand); // construct the set Gamma_cand
+	vector<vector<int> > admissibleGraph(vector<vector<int> > rankings,vector<int> candidates, vector<int> matchCandidates); // to get a comprehensive matching
 	vector<vector<int> > graphOfJ(vector<vector<int> > rankings, vector<int> candidates, vector<int> Gamma_cand, vector<int> Gamma_dep, vector<int> K);    // construct the edge set used to compute a maximum matching (rankings restricted to Gamma_cand, truncated at K)
 	
 	void matchingStars(vector<vector<int> > profile, int dim);   // assign candidates ranked only 1st (and at least twice) to a position.
