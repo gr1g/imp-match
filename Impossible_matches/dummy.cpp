@@ -999,39 +999,51 @@ void DUMMY::matchingStars(vector<vector<int> > profile, int dim) {
         
         // work with a new ranking on this iteration
         vector<vector<int> > thisRankings = implementStarsChoices(theChoices, starsChoiceSet, profile);
+        vector<vector<int> > thisImpossible;
+        thisImpossible.resize(thisRankings.size());
+        for (int j = 0 ; j < thisRankings.size(); j++) {
+            thisImpossible[j].push_back(thisRankings[j][0]);
+            thisImpossible[j].push_back(0);
+            for (int i = 1; j < thisRankings[j].size(); i++) {
+                thisImpossible[j].push_back(-1);
+            }
+        }
+        // Find the impossible matches
+        for (int j = 0 ; j < thisRankings.size() ; j++) {
+            for (int i = 2 ; i < thisRankings[j].size() ; i++) {
+                if (thisImpossible[j][i] == -1) {
+                    checkImpossible(thisRankings, thisRankings[j][i], j, thisImpossible);
+                }
+            }
+        }
+        // Eliminates the impossible matches and sets next profile
+        for (int j = 0 ; j < thisRankings.size() ; j++) {
+            for (int i = 2 ; i < thisRankings[j].size() ; i++) {
+                if (thisImpossible[j][i]==1) {
+                    thisRankings[j].erase(thisRankings[j].begin()+i);
+                    thisImpossible[j].erase(thisImpossible[j].begin()+i);
+                    i=i-1;
+                }
+            }
+        }
         
-        /*
-         vector<vector<int> > thisImpossible;
-         thisImpossible.resize(thisRankings.size());
-         for (int j = 0 ; j < thisRankings.size(); j++) {
-         thisImpossible[j].push_back(thisRankings[j][0]);
-         thisImpossible[j].push_back(0);
-         for (int i = 1; j < thisRankings[j].size(); i++) {
-         thisImpossible[j].push_back(-1);
-         }
-         }
-         // Find the impossible matches
-         for (int j = 0 ; j < thisRankings.size() ; j++) {
-         for (int i = 2 ; i < thisRankings[j].size() ; i++) {
-         if (thisImpossible[j][i] == -1) {
-         checkImpossible(thisRankings, thisRankings[j][i], j, thisImpossible);
-         }
-         }
-         }
-         // Eliminates the impossible matches and sets next profile
-         for (int j = 0 ; j < thisRankings.size() ; j++) {
-         for (int i = 2 ; i < thisRankings[j].size() ; i++) {
-         if (thisImpossible[j][i]==1) {
-         thisRankings[j].erase(thisRankings[j].begin()+i);
-         thisImpossible[j].erase(thisImpossible[j].begin()+i);
-         i=i-1;
-         }
-         }
-         }
-         */
         if (dim < maxIter) {
             //cout << " Entering innter loop " << dim+1 <<  " \n";
             matchingStars(thisRankings, dim+1);
+        } else {
+            for (int j = 0 ; j < thisRankings.size() ; j++) {
+                int counter=0;
+                for (int jj = 0 ; jj < thisRankings.size() ; jj++) {
+                    for (int i = 1 ; i < thisRankings[jj].size() ; i++) {
+                        if (thisRankings[j][1]==thisRankings[jj][i]) {
+                            counter++;
+                        }
+                    }
+                }
+                if (counter==1) {
+                    numberPositionsCleared++;
+                }
+            }
         }
         
         // cout << laCombination << "\tAfter stars: "  << counter << " positions solved out of " << t.size() << " (" << 100*((float)counter/(float)originalRankings.size())  << "%)\n";
@@ -1943,7 +1955,7 @@ void DUMMY::buildGamma(vector<vector<int> > rankings, vector<int> candidates, in
         exit(1);
     }
     if (presentInVector(Gamma_cand, i0)) {
-        cout << "i0 in Gamma (end of Contructin Gamma)\n";
+        cout << "i0 in Gamma (end of Contructing Gamma)\n";
         exit(1);
     }
 }
