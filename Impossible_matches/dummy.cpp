@@ -1326,7 +1326,7 @@ void DUMMY::checkImpossible(vector<vector<int> > profile, int i0, int s0, vector
         // but Positions[0] is s0.
         // so i0 is not an impossible match for s0.
         decided=1;
-        impossible[s0][index(impossible[s0], i0)]=0;
+        impossible[s0][indexInRankings(impossible[s0], i0)]=0;
         //cout << "i0 matched, not impossible";
         // recall that s0 is the s0-th department in originalRankings.
         
