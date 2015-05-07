@@ -14,7 +14,7 @@
 
 DUMMY::DUMMY()
 {
-    maxIter = 3;
+    maxIter = 2;
 }
 
 
@@ -992,22 +992,36 @@ void DUMMY::matchingStars(vector<vector<int> > profile, int dim) {
         capacity.push_back((int)(starsChoiceSet[i].size()));
     }
     
+    if (dim==1) {
+        cout << theTotal << " combinations to consider\n";
+    }
     
     int laCombination=1;
     while (laCombination < theTotal) {
+        cout << "Combination " << laCombination << "/" << theTotal << ", dim = " << dim << "\n";
         totalNumberCombinations++;
         
         // work with a new ranking on this iteration
         vector<vector<int> > thisRankings = implementStarsChoices(theChoices, starsChoiceSet, profile);
+        
+        for (int j = 0 ; j < thisRankings.size() ; j++) {
+            for (int i = 0 ; i < thisRankings[j].size() ; i++) {
+                cout << thisRankings[j][i] << "\t";
+            }
+            cout << "\n";
+        }
+        
         vector<vector<int> > thisImpossible;
         thisImpossible.resize(thisRankings.size());
+        
         for (int j = 0 ; j < thisRankings.size(); j++) {
             thisImpossible[j].push_back(thisRankings[j][0]);
             thisImpossible[j].push_back(0);
-            for (int i = 1; j < thisRankings[j].size(); i++) {
+            for (int i = 1; i < thisRankings[j].size(); i++) {
                 thisImpossible[j].push_back(-1);
             }
         }
+        cout << "looking for the impossible matches\n";
         // Find the impossible matches
         for (int j = 0 ; j < thisRankings.size() ; j++) {
             for (int i = 2 ; i < thisRankings[j].size() ; i++) {
@@ -1016,6 +1030,7 @@ void DUMMY::matchingStars(vector<vector<int> > profile, int dim) {
                 }
             }
         }
+        cout << "Elininate impossibles matches\n";
         // Eliminates the impossible matches and sets next profile
         for (int j = 0 ; j < thisRankings.size() ; j++) {
             for (int i = 2 ; i < thisRankings[j].size() ; i++) {
@@ -1028,7 +1043,7 @@ void DUMMY::matchingStars(vector<vector<int> > profile, int dim) {
         }
         
         if (dim < maxIter) {
-            //cout << " Entering innter loop " << dim+1 <<  " \n";
+            cout << " Entering innter loop " << dim+1 <<  " \n";
             matchingStars(thisRankings, dim+1);
         } else {
             for (int j = 0 ; j < thisRankings.size() ; j++) {
