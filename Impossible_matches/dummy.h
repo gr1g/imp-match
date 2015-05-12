@@ -31,7 +31,6 @@ public:
     void loadData(string dataFile); // loads data from dataFile
     void stepOne(); // main algorithm
     void stepTwo(); // refinement with stars
-    void postAnalysis();
     void printResults(string outputFile);
     
     // Main functions
@@ -42,31 +41,39 @@ public:
     int newrankedOnce(vector<vector<int> > &rankingsOfPositions);
     int newrankedMutiple(vector<vector<int> > &rankingsOfPositions);
     
-    void simpleBlocks();    // calls in a loop rankedOnce() and RankedMultiple(): to eliminate easy cases of impossible matches (see web appendix)
+    // petitsblocks = calls in a loop rankedOnce() and RankedMultiple(): to eliminate easy cases of impossible matches (see web appendix)
     void petitsblocks(vector<vector<int> > &rankingsOfPositions);
-    vector<vector<int> > simplify_i0(vector<vector<int> > profile, int i0, int s0); // construct rankings from profile
+
+    // construct rankings from profile
+    vector<vector<int> > simplify_i0(vector<vector<int> > profile, int i0, int s0);
     
-    void comprehensiveMatching(vector<vector<int> > &rankings, vector<int> &candidates, vector<int> &matching_candidate, vector<int> &matching_department); // construct a comprehensive matching
+    // construct a comprehensive matching
+    void comprehensiveMatching(vector<vector<int> > rankings, vector<int> candidates, vector<int> &matching_candidate, vector<int> &matching_department);
     void checkComprehensiveness(vector<vector<int> > rankings, vector<int> candidates, string step);
-    void checkImpossible(vector<vector<int> > profile, int i0, int s0, vector<vector<int> > &impossible); // main function to check a candidate is impossible
+    // admissibleGraph = main function to check a candidate is impossible
+    vector<vector<int> > admissibleGraph(vector<vector<int> > rankings,vector<int> candidates, vector<int> matchCandidates);
+    
+    // main function to check a candidate is impossible
+    void checkImpossible(vector<vector<int> > profile, int i0, int s0, vector<vector<int> > &impossible);
     
     vector<int> buildPossible_K(vector<int> Gamma_cand, vector<vector<int> > rankings, vector<int> J_0);
-    void buildGamma(vector<vector<int> > rankings, vector<int> candidates, int i0, vector<int> matching_candidate, vector<int> matching_department, vector<int> &J_0, vector<int> &Gamma_dep, vector<int> &Gamma_cand); // construct the set Gamma_cand
-    vector<vector<int> > admissibleGraph(vector<vector<int> > rankings,vector<int> candidates, vector<int> matchCandidates); // to get a comprehensive matching
-    vector<vector<int> > graphOfJ(vector<vector<int> > rankings, vector<int> candidates, vector<int> Gamma_cand, vector<int> Gamma_dep, vector<int> K);    // construct the edge set used to compute a maximum matching (rankings restricted to Gamma_cand, truncated at K)
     
-    void matchingStars(vector<vector<int> > profile, int dim);   // assign candidates ranked only 1st (and at least twice) to a position.
+    // construct the set Gamma_cand
+    void buildGamma(vector<vector<int> > rankings, vector<int> candidates, int i0, vector<int> matching_candidate, vector<int> matching_department, vector<int> &J_0, vector<int> &Gamma_dep, vector<int> &Gamma_cand);
+    
+    // construct the edge set used to compute a maximum matching (rankings restricted to Gamma_cand, truncated at K)
+    vector<vector<int> > graphOfJ(vector<vector<int> > rankings, vector<int> candidates, vector<int> Gamma_cand, vector<int> Gamma_dep, vector<int> K);
+    
+    // construct the edge set used to compute a maximum matching (rankings restricted to Gamma_cand, truncated at K)
+    void matchingStars(vector<vector<int> > profile, int dim);
     void getStars(vector<vector<int> > profile, vector<int> &theStars, vector<vector<int> > &theirChoices);
     vector<vector<int> > implementStarsChoices(vector<int> chosenPositions, vector<vector<int> > choiceSet, vector<vector<int> > profile);
     
     void nextChoices(vector<int> &theSet, vector<int> &capacity);
     
     int marketCleared(vector<vector<int> > &profile);
-    
     void copyRankings(vector<vector<int> > &source, vector<vector<int> > &copy);
-    
     int loopK(vector<int> K, vector<vector<int> > rankings, vector<int> candidates, vector<int> Gamma_cand, vector<int> Gamma_dep, vector<int> J_0, int s0, int i0);
-    
     void notImpossibles(vector<int> candidate, vector<vector<int> > rankings, vector<int> matching_candidate, vector<vector<int> > &impossibles);
     
     
@@ -78,15 +85,15 @@ public:
     
     // Additional functions
     
-    int index(const vector<int> &S, int a); // Get the index of "a" in a vector "S" (spans all coordinate starting from 0)
-    int indexInRankings(const vector<int> &S, int a);   // Get the index of "candidate" a in a ranking "S" (spans all coordinate starting from 1)
+    int index(const vector<int> S, int a); // Get the index of "a" in a vector "S" (spans all coordinate starting from 0)
+    int indexInRankings(const vector<int> S, int a);   // Get the index of "candidate" a in a ranking "S" (spans all coordinate starting from 1)
     void Truncate(vector<int> &S, int a);
-    bool presentInVector(const vector<int> &S, int z);  // Return 1 if "z" is in "S", 0 otherwise
+    bool presentInVector(const vector<int> S, int z);  // Return 1 if "z" is in "S", 0 otherwise
     signed long int coeff(int n, int k); // Compute # of combinations for a set of size k in a set of size n.
-    void next_subset(vector<int> &selectedIndex, int n, int k); // construct the next subset K.
+    void nextSubset(vector<int> &selectedIndex, int n, int k); // construct the next subset K.
     
     // Variables, vectors, ...
-    string theFunction;
+    string theFunction; // for debugging purposes
     int maxIter;
     vector<vector<int> > originalRankings; // The data for each year
     vector<vector<int> > originalImpossible; // Recording who is an impossible match. Same dimensions are originalRankings

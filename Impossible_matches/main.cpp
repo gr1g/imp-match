@@ -100,7 +100,6 @@ int main(int argc, const char * argv[])
         dummy.loadData(filename.c_str());
         dummy.stepOne();
         dummy.stepTwo();
-        dummy.postAnalysis();
         
         
         (void) time(&t2);
