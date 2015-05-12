@@ -37,7 +37,7 @@ int main(int argc, const char * argv[])
     
     
     
-    for (year_index = 5 ; year_index < 12 ; year_index++) {
+    for (year_index = 3 ; year_index < 12 ; year_index++) {
         if (year_index == 0) {
             filename = "1999-data.txt";
         }
@@ -75,7 +75,7 @@ int main(int argc, const char * argv[])
             filename = "2010-data.txt";
         }
         
-        output.open ("result.txt", std::ofstream::out | std::ofstream::app);
+        output.open ("results.txt", std::ofstream::out | std::ofstream::app);
         
         cout << "\n\n";
         cout << "*************************************\n*\n*";
