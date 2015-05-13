@@ -35,9 +35,9 @@ int main(int argc, const char * argv[])
     
     ofstream output;
     
+    year_index=0;
     
-    
-    for (year_index = 3 ; year_index < 12 ; year_index++) {
+    for (year_index = 5 ; year_index < 12 ; year_index++) {
         if (year_index == 0) {
             filename = "1999-data.txt";
         }
@@ -97,7 +97,8 @@ int main(int argc, const char * argv[])
         
         
         DUMMY dummy;
-        dummy.loadData(filename.c_str());
+        dummy.year = year_index+1999;
+        dummy.loadData(filename);
         dummy.stepOne();
         dummy.stepTwo();
         
@@ -115,17 +116,22 @@ int main(int argc, const char * argv[])
         if (hours > 1 ) {
             hour = "hours";
         }
+        
+        output.open ("results.txt", std::ofstream::out | std::ofstream::app);
+
         cout << "\nTime spent: ";
         if (hours < 1) {
             if (minutes < 1 ) {
                 cout << seconds << " " << second << endl;
+                output << seconds << " " << second << endl;
             } else {
                 cout << minutes << " " << minute << ", " << seconds << " " << second <<endl;
+                output << minutes << " " << minute << ", " << seconds << " " << second <<endl;
             }
         } else {
             cout << hours << " " << hour << ", " << minutes << " " << minute << ", " << seconds << " " << second <<endl;
+            output << hours << " " << hour << ", " << minutes << " " << minute << ", " << seconds << " " << second <<endl;
         }
+        output.close();
     }
-    
-    
 }

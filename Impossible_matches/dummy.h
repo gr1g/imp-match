@@ -26,6 +26,7 @@ public:
     DUMMY();
     
     ofstream output;
+    ofstream details;
     
     // Main Steps
     void loadData(string dataFile); // loads data from dataFile
@@ -65,7 +66,7 @@ public:
     vector<vector<int> > graphOfJ(vector<vector<int> > rankings, vector<int> candidates, vector<int> Gamma_cand, vector<int> Gamma_dep, vector<int> K);
     
     // construct the edge set used to compute a maximum matching (rankings restricted to Gamma_cand, truncated at K)
-    void matchingStars(vector<vector<int> > profile, int dim);
+    void matchingStars(vector<vector<int> > profile, int dim, vector<int> &theLoops);
     void getStars(vector<vector<int> > profile, vector<int> &theStars, vector<vector<int> > &theirChoices);
     vector<vector<int> > implementStarsChoices(vector<int> chosenPositions, vector<vector<int> > choiceSet, vector<vector<int> > profile);
     
@@ -76,6 +77,7 @@ public:
     int loopK(vector<int> K, vector<vector<int> > rankings, vector<int> candidates, vector<int> Gamma_cand, vector<int> Gamma_dep, vector<int> J_0, int s0, int i0);
     void notImpossibles(vector<int> candidate, vector<vector<int> > rankings, vector<int> matching_candidate, vector<vector<int> > &impossibles);
     
+    bool thereAreStars(vector<vector<int> > profile);
     
     // Maximum matching functions
     int dfs(vector<vector<int> > rankings, int a, vector<int> candidates, vector<vector<int> > edge, vector<int> &matching_candidate, vector<int> &matching_department, vector<int> &visited);
@@ -102,7 +104,11 @@ public:
     
     int numberPositionsCleared;
     int totalNumberCombinations;
-    
+    int maxDim=0;
+    int firstStep;
+    int preferencesSimulated;
+    int year;
+
 };
 
 #endif /* defined(__Impossible_matches__dummy__) */
