@@ -18,12 +18,11 @@ using std::cerr;
 using std::cout;
 using std::endl;
 using std::ifstream;
+using std::ofstream;
 using namespace std;
 
-int main(int argc, const char * argv[])
-{
-    
-    
+//int main(int argc, const char * argv[])
+int main() {
     int year_index;
     string filename;
     time_t t1,t2;    // time variables to count the time spent running the program
@@ -32,12 +31,13 @@ int main(int argc, const char * argv[])
     second = "second";
     minute = "minute";
     hour = "hour";
-    
+    filename="none";
     ofstream output;
+    
     
     year_index=0;
     
-    for (year_index = 5 ; year_index < 12 ; year_index++) {
+    for (year_index = 1 ; year_index < 12 ; year_index++) {
         if (year_index == 0) {
             filename = "1999-data.txt";
         }
@@ -75,7 +75,15 @@ int main(int argc, const char * argv[])
             filename = "2010-data.txt";
         }
         
-        output.open ("results.txt", std::ofstream::out | std::ofstream::app);
+        DUMMY dummy;
+        std::string currentYear = std::to_string(year_index+1999);
+        dummy.fileNameResults = "Results-" +(currentYear) + ".txt";
+        dummy.fileNameMatchings = "Matchings-" +(currentYear) + ".txt";
+        
+        output.open(dummy.fileNameResults, ofstream::out);
+        
+//        output.open(fileNameResults, ofstream::out | ofstream::app);
+        //output.open("results.txt", ofstream::out | ofstream::app);
         
         cout << "\n\n";
         cout << "*************************************\n*\n*";
@@ -96,7 +104,6 @@ int main(int argc, const char * argv[])
         
         
         
-        DUMMY dummy;
         dummy.year = year_index+1999;
         dummy.loadData(filename);
         dummy.stepOne();
@@ -117,7 +124,8 @@ int main(int argc, const char * argv[])
             hour = "hours";
         }
         
-        output.open ("results.txt", std::ofstream::out | std::ofstream::app);
+        
+        output.open(dummy.fileNameResults, std::ofstream::out | std::ofstream::app);
 
         cout << "\nTime spent: ";
         if (hours < 1) {
@@ -134,4 +142,5 @@ int main(int argc, const char * argv[])
         }
         output.close();
     }
+    return 0;
 }

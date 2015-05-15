@@ -26,6 +26,7 @@ public:
     DUMMY();
     
     ofstream output;
+    ofstream theMatchings;
     ofstream details;
     
     // Main Steps
@@ -100,15 +101,20 @@ public:
     vector<vector<int> > originalRankings; // The data for each year
     vector<vector<int> > originalImpossible; // Recording who is an impossible match. Same dimensions are originalRankings
     vector<vector<int> > hired;
+    vector<int> stepOnePredicted;
     
     
     int numberPositionsCleared;
     int totalNumberCombinations;
-    int maxDim=0;
+    int maxDim;
     int firstStep;
     int preferencesSimulated;
     int year;
+    
+    string fileNameResults;
+    string fileNameMatchings;
 
+    
 };
 
 #endif /* defined(__Impossible_matches__dummy__) */
