@@ -778,9 +778,10 @@ void DUMMY::stepOne() {
     
     cout << "Checking Impossible for step One: " << candidatesToGo << " candidates to look at\n";
     cout << "Done so far: ";
+//    cout << "hello\n";
     output << "Checking Impossible for step One: " << candidatesToGo << " candidates to look at\n";
     output << "Done so far: ";
-    int candidatesDone=1;
+    candidatesDone=1;
     //
     //	Find the impossible matches.
     //
@@ -1150,9 +1151,9 @@ void DUMMY::matchingStars(vector<vector<int> > profile, int dim, vector<int> &th
                         }
                     }
                     if (count==1) {
-                        theMatchings << originalRankings[j][1] << "\t";
+                        //theMatchings << originalRankings[j][1] << "\t";
                     } else {
-                        theMatchings << "NA\t";
+                        //theMatchings << "NA\t";
                     }
                 }
             }
@@ -1252,6 +1253,7 @@ vector<vector<int> > DUMMY::simplify_i0(vector<vector<int> > profile, int i0, in
     vector<int> Candidates; // set of candidates that are in rankings
     vector<int> Positions;
     
+    
     for (int i = 1 ; i < (indexInRankings(profile[s0], i0)+1) ; i++) {
         // index(i0)+1 to include i0, and nobody after.
         Candidates.push_back(profile[s0][i]);
@@ -1347,7 +1349,7 @@ vector<vector<int> > DUMMY::simplify_i0(vector<vector<int> > profile, int i0, in
         }
     }
     
-    
+
     return rankings;
 }
 
@@ -1412,6 +1414,8 @@ void DUMMY::checkImpossible(vector<vector<int> > profile, int i0, int s0, vector
     theFunction="checkImpossible";
     // i0 comes from originalRankings[j][i] = name of a candidate
     // s0 comes from j = index of the deparment in originalRankings[][] (not the name!)
+    
+
     
     int decided = 0;
     vector<vector<int> > rankings;

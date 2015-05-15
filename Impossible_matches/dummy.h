@@ -113,7 +113,7 @@ public:
     
     string fileNameResults;
     string fileNameMatchings;
-
+    int candidatesDone;
     
 };
 

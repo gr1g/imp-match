@@ -37,7 +37,7 @@ int main() {
     
     year_index=0;
     
-    for (year_index = 1 ; year_index < 12 ; year_index++) {
+    for (year_index = 2 ; year_index < 12 ; year_index++) {
         if (year_index == 0) {
             filename = "1999-data.txt";
         }
