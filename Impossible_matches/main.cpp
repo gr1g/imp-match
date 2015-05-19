@@ -37,7 +37,7 @@ int main() {
     
     year_index=0;
     
-    for (year_index = 2 ; year_index < 12 ; year_index++) {
+    for (year_index = 4 ; year_index < 12 ; year_index++) {
         if (year_index == 0) {
             filename = "1999-data.txt";
         }
@@ -79,6 +79,7 @@ int main() {
         std::string currentYear = std::to_string(year_index+1999);
         dummy.fileNameResults = "Results-" +(currentYear) + ".txt";
         dummy.fileNameMatchings = "Matchings-" +(currentYear) + ".txt";
+				dummy.fileRankingsStepOne = "Rankings-StepOne-" +(currentYear) + ".txt";
         
         output.open(dummy.fileNameResults, ofstream::out);
         
@@ -105,8 +106,8 @@ int main() {
         
         
         dummy.year = year_index+1999;
-        dummy.loadData(filename);
-        dummy.stepOne();
+        //dummy.loadData(filename);
+        //dummy.stepOne();
         dummy.stepTwo();
         
         

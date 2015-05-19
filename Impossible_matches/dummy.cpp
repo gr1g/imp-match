@@ -46,7 +46,7 @@ int DUMMY::index(const vector<int> S, int a){
 int DUMMY::indexInRankings(const vector<int> S, int a){
     theFunction="indexInRankings";
     int  ans=-1;
-    if (S.size()>2) {
+    if (S.size()>1) {
         for (int i = 1 ; i < S.size(); i++) {
             if (S[i]==a) {
                 ans=i;
@@ -725,7 +725,9 @@ void DUMMY::loadData(std::string dataFile) {
 
 void DUMMY::stepOne() {
     theFunction="stepOne";
-    
+	
+	ofstream fileRankings;
+	
     // first simplify the ranking profile by eliminating
     // the impossible matches because of simple blocks.
     
@@ -734,7 +736,8 @@ void DUMMY::stepOne() {
     //
     stepOnePredicted.clear();
     stepOnePredicted.resize(0);
-    
+
+	
     vector<int> lesCandidats;
     lesCandidats.clear();
     lesCandidats.resize(0);
@@ -845,7 +848,16 @@ void DUMMY::stepOne() {
     }
     theMatchings << "\n\n";
     theMatchings.close();
-    
+	
+	fileRankings.open(fileRankingsStepOne, std::ofstream::out);
+	for (int j = 0 ; j < originalRankings.size() ; j++) {
+		for (int i = 0 ; i < originalRankings[j].size() ; i++) {
+			fileRankings << originalRankings[j][i] << "\t";
+		}
+		fileRankings << "\n";
+	}
+	
+	
     cout << "********\n";
     cout << "Found " << numberImpossibles << " additional impossible matches\n";
     cout << "First run of impossible matches: " << marketCleared(originalRankings) << " positions solved out of " << originalRankings.size() << " (" << 100*((float)(marketCleared(originalRankings))/(float)originalRankings.size())  << "%)\n";
@@ -897,7 +909,454 @@ void DUMMY::stepOne() {
 //                                                                      //
 void DUMMY::stepTwo() {
     theFunction="stepTwo";
-    
+	
+	originalRankings.clear();
+	originalRankings.resize(97);
+	
+	
+	originalRankings[0].push_back(32);
+	originalRankings[0].push_back(2241);
+	originalRankings[0].push_back(2287);
+	originalRankings[0].push_back(963);
+	originalRankings[0].push_back(188);
+	originalRankings[0].push_back(975);
+	originalRankings[0].push_back(364);
+	originalRankings[0].push_back(1146);
+																originalRankings[1].push_back(33);
+																originalRankings[1].push_back(2241);
+																originalRankings[1].push_back(2287);
+																originalRankings[1].push_back(963);
+																originalRankings[1].push_back(188);
+																originalRankings[1].push_back(975);
+																originalRankings[1].push_back(364);
+	originalRankings[1].push_back(1146);
+																															originalRankings[2].push_back(34);
+																															originalRankings[2].push_back(2241);
+																															originalRankings[2].push_back(2287);
+																															originalRankings[2].push_back(963);
+																															originalRankings[2].push_back(188);
+																															originalRankings[2].push_back(975);
+																															originalRankings[2].push_back(364);
+																															originalRankings[2].push_back(1146);
+																																														originalRankings[3].push_back(28);
+																																														originalRankings[3].push_back(1631);
+																																														originalRankings[3].push_back(974);
+																																														originalRankings[3].push_back(1376);
+																																														originalRankings[3].push_back(1351);
+																																														
+																																														originalRankings[4].push_back(29);
+																																														originalRankings[4].push_back(1631);
+																																														originalRankings[4].push_back(974);
+																																														originalRankings[4].push_back(1376);
+																																														originalRankings[4].push_back(1351);
+																																														
+																																														originalRankings[5].push_back(51);
+																																														originalRankings[5].push_back(2241);
+																																														originalRankings[5].push_back(2785);
+																																														originalRankings[5].push_back(17);
+																																														originalRankings[5].push_back(2169);
+																																														originalRankings[5].push_back(1146);
+																																														
+																																														originalRankings[6].push_back(52);
+																																														originalRankings[6].push_back(2241);
+																																														originalRankings[6].push_back(2785);
+																																														originalRankings[6].push_back(17);
+																																														originalRankings[6].push_back(2169);
+																																														originalRankings[6].push_back(1146);
+																																														
+																																														originalRankings[7].push_back(62);
+																																														originalRankings[7].push_back(1217);
+																																														originalRankings[7].push_back(171);
+																																														originalRankings[7].push_back(2553);
+																																														originalRankings[7].push_back(2628);
+																																														originalRankings[7].push_back(2147);
+																																														
+																																														originalRankings[8].push_back(63);
+																																														originalRankings[8].push_back(1217);
+																																														originalRankings[8].push_back(171);
+																																														originalRankings[8].push_back(2553);
+																																														originalRankings[8].push_back(2628);
+																																														originalRankings[8].push_back(2147);
+																																														
+																																														originalRankings[9].push_back(84);
+																																														originalRankings[9].push_back(200);
+																																														originalRankings[9].push_back(2247);
+																																														originalRankings[9].push_back(2549);
+																																														originalRankings[9].push_back(970);
+																																														originalRankings[9].push_back(2277);
+																																														
+																																														originalRankings[10].push_back(85);
+																																														originalRankings[10].push_back(200);
+																																														originalRankings[10].push_back(2247);
+																																														originalRankings[10].push_back(2549);
+																																														originalRankings[10].push_back(970);
+																																														originalRankings[10].push_back(2277);
+																																														
+																																														originalRankings[11].push_back(86);
+																																														originalRankings[11].push_back(200);
+																																														originalRankings[11].push_back(2247);
+																																														originalRankings[11].push_back(2549);
+																																														originalRankings[11].push_back(970);
+																																														originalRankings[11].push_back(2277);
+																																														
+																																														originalRankings[12].push_back(21);
+																																														originalRankings[12].push_back(975);
+																																														originalRankings[12].push_back(2002);
+																																														originalRankings[12].push_back(662);
+																																														originalRankings[12].push_back(828);
+																																														
+																																														originalRankings[13].push_back(22);
+																																														originalRankings[13].push_back(975);
+																																														originalRankings[13].push_back(2002);
+																																														originalRankings[13].push_back(828);
+																																														
+																																														originalRankings[14].push_back(17);
+																																														originalRankings[14].push_back(2018);
+	
+																																														originalRankings[15].push_back(18);
+																																														originalRankings[15].push_back(2018);
+	
+																																														originalRankings[16].push_back(1);
+																																														originalRankings[16].push_back(968);
+	
+																																														originalRankings[17].push_back(2);
+																																														originalRankings[17].push_back(651);
+																																														originalRankings[17].push_back(2758);
+	
+																																														originalRankings[18].push_back(3);
+																																														originalRankings[18].push_back(2285);
+																																														originalRankings[18].push_back(192);
+																																														originalRankings[18].push_back(2628);
+																																														originalRankings[18].push_back(334);
+																																														
+																																														originalRankings[19].push_back(4);
+																																														originalRankings[19].push_back(856);
+	
+																																														originalRankings[20].push_back(6);
+																																														originalRankings[20].push_back(1603);
+																																														originalRankings[20].push_back(92);
+	
+																																														originalRankings[21].push_back(7);
+																																														originalRankings[21].push_back(651);
+																																														originalRankings[21].push_back(963);
+																																														originalRankings[21].push_back(87);
+																																														
+																																														originalRankings[22].push_back(8);
+																																														originalRankings[22].push_back(2082);
+	
+																																														originalRankings[23].push_back(9);
+																																														originalRankings[23].push_back(168);
+																																														originalRankings[23].push_back(1500);
+	
+																																														originalRankings[24].push_back(10);
+																																														originalRankings[24].push_back(200);
+																																														originalRankings[24].push_back(989);
+	
+																																														originalRankings[25].push_back(11);
+																																														originalRankings[25].push_back(448);
+	
+																																														originalRankings[26].push_back(12);
+																																														originalRankings[26].push_back(2551);
+	
+																																														originalRankings[27].push_back(13);
+																																														originalRankings[27].push_back(2378);
+																																														originalRankings[27].push_back(974);
+																																														originalRankings[27].push_back(168);
+																																														originalRankings[27].push_back(2266);
+																																														
+																																														originalRankings[28].push_back(14);
+																																														originalRankings[28].push_back(192);
+																																														originalRankings[28].push_back(171);
+																																														originalRankings[28].push_back(455);
+																																														originalRankings[28].push_back(2932);
+																																														originalRankings[28].push_back(1779);
+																																														
+																																														originalRankings[29].push_back(16);
+																																														originalRankings[29].push_back(2287);
+																																														originalRankings[29].push_back(171);
+																																														originalRankings[29].push_back(1779);
+																																														originalRankings[29].push_back(2173);
+																																														originalRankings[29].push_back(2932);
+																																														
+																																														originalRankings[30].push_back(19);
+																																														originalRankings[30].push_back(2720);
+	
+																																														originalRankings[31].push_back(20);
+																																														originalRankings[31].push_back(200);
+																																														originalRankings[31].push_back(2783);
+																																														originalRankings[31].push_back(1146);
+																																														originalRankings[31].push_back(1603);
+																																														
+																																														originalRankings[32].push_back(23);
+																																														originalRankings[32].push_back(2378);
+																																														originalRankings[32].push_back(1631);
+																																														originalRankings[32].push_back(974);
+																																														originalRankings[32].push_back(168);
+																																														originalRankings[32].push_back(2173);
+																																														
+																																														originalRankings[33].push_back(24);
+																																														originalRankings[33].push_back(171);
+																																														originalRankings[33].push_back(455);
+																																														originalRankings[33].push_back(1146);
+																																														originalRankings[33].push_back(970);
+																																														originalRankings[33].push_back(99);
+																																														
+																																														originalRankings[34].push_back(25);
+																																														originalRankings[34].push_back(2628);
+																																														originalRankings[34].push_back(1322);
+																																														originalRankings[34].push_back(2932);
+																																														originalRankings[34].push_back(1961);
+																																														originalRankings[34].push_back(1217);
+																																														
+																																														originalRankings[35].push_back(26);
+																																														originalRankings[35].push_back(783);
+	
+																																														originalRankings[36].push_back(27);
+																																														originalRankings[36].push_back(124);
+																																														originalRankings[36].push_back(379);
+																																														originalRankings[36].push_back(299);
+																																														
+																																														originalRankings[37].push_back(30);
+																																														originalRankings[37].push_back(1843);
+	
+																																														originalRankings[38].push_back(31);
+																																														originalRankings[38].push_back(1631);
+																																														originalRankings[38].push_back(974);
+																																														originalRankings[38].push_back(1376);
+																																														originalRankings[38].push_back(1787);
+																																														
+																																														originalRankings[39].push_back(35);
+																																														originalRankings[39].push_back(1670);
+																																														
+																																														originalRankings[40].push_back(36);
+																																														originalRankings[40].push_back(508);
+																																														
+																																														originalRankings[41].push_back(37);
+																																														originalRankings[41].push_back(1584);
+																																														
+																																														originalRankings[42].push_back(39);
+																																														originalRankings[42].push_back(2184);
+																																														
+																																														originalRankings[43].push_back(40);
+																																														originalRankings[43].push_back(1118);
+																																														
+																																														originalRankings[44].push_back(41);
+																																														originalRankings[44].push_back(1200);
+																																														
+																																														originalRankings[45].push_back(42);
+																																														originalRankings[45].push_back(2855);
+																																														
+																																														originalRankings[46].push_back(45);
+																																														originalRankings[46].push_back(524);
+																																														originalRankings[46].push_back(857);
+																																														originalRankings[46].push_back(1961);
+																																														
+																																														originalRankings[47].push_back(46);
+																																														originalRankings[47].push_back(379);
+																																														originalRankings[47].push_back(2791);
+																																														
+																																														originalRankings[48].push_back(47);
+																																														originalRankings[48].push_back(651);
+																																														originalRankings[48].push_back(1263);
+																																														
+																																														originalRankings[49].push_back(48);
+																																														originalRankings[49].push_back(2367);
+																																														
+																																														originalRankings[50].push_back(49);
+																																														originalRankings[50].push_back(622);
+																																														
+																																														originalRankings[51].push_back(50);
+																																														originalRankings[51].push_back(1848);
+																																														originalRankings[51].push_back(856);
+																																														
+																																														originalRankings[52].push_back(53);
+																																														originalRankings[52].push_back(1848);
+																																														originalRankings[52].push_back(17);
+																																														originalRankings[52].push_back(2169);
+																																														originalRankings[52].push_back(1146);
+																																														
+																																														originalRankings[53].push_back(54);
+																																														originalRankings[53].push_back(3015);
+																																														
+																																														originalRankings[54].push_back(55);
+																																														originalRankings[54].push_back(2504);
+																																														
+																																														originalRankings[55].push_back(56);
+																																														originalRankings[55].push_back(83);
+																																														
+																																														originalRankings[56].push_back(57);
+																																														originalRankings[56].push_back(1603);
+																																														originalRankings[56].push_back(447);
+																																														
+																																														originalRankings[57].push_back(58);
+																																														originalRankings[57].push_back(2783);
+																																														originalRankings[57].push_back(507);
+																																														
+																																														originalRankings[58].push_back(59);
+																																														originalRankings[58].push_back(2847);
+																																														
+																																														originalRankings[59].push_back(60);
+																																														originalRankings[59].push_back(124);
+																																														originalRankings[59].push_back(2931);
+																																														
+																																														originalRankings[60].push_back(61);
+																																														originalRankings[60].push_back(2224);
+																																														
+																																														originalRankings[61].push_back(64);
+																																														originalRankings[61].push_back(1925);
+																																														
+																																														originalRankings[62].push_back(65);
+																																														originalRankings[62].push_back(524);
+																																														originalRankings[62].push_back(1322);
+																																														originalRankings[62].push_back(2674);
+																																														
+																																														originalRankings[63].push_back(66);
+																																														originalRankings[63].push_back(589);
+																																														
+																																														originalRankings[64].push_back(67);
+																																														originalRankings[64].push_back(1603);
+																																														originalRankings[64].push_back(200);
+																																														originalRankings[64].push_back(604);
+																																														
+																																														originalRankings[65].push_back(70);
+																																														originalRankings[65].push_back(588);
+																																														
+																																														originalRankings[66].push_back(72);
+																																														originalRankings[66].push_back(960);
+																																														
+																																														originalRankings[67].push_back(74);
+																																														originalRankings[67].push_back(974);
+																																														originalRankings[67].push_back(1224);
+																																														originalRankings[67].push_back(2378);
+																																														
+																																														originalRankings[68].push_back(79);
+																																														originalRankings[68].push_back(1258);
+																																														
+																																														originalRankings[69].push_back(80);
+																																														originalRankings[69].push_back(2984);
+																																														
+																																														originalRankings[70].push_back(82);
+																																														originalRankings[70].push_back(2858);
+																																														originalRankings[70].push_back(1779);
+																																														originalRankings[70].push_back(1322);
+																																														originalRankings[70].push_back(2932);
+																																														
+																																														originalRankings[71].push_back(83);
+																																														originalRankings[71].push_back(2362);
+																																														
+																																														originalRankings[72].push_back(87);
+																																														originalRankings[72].push_back(2629);
+																																														
+																																														originalRankings[73].push_back(88);
+																																														originalRankings[73].push_back(737);
+																																														
+																																														originalRankings[74].push_back(90);
+																																														originalRankings[74].push_back(662);
+																																														originalRankings[74].push_back(447);
+																																														originalRankings[74].push_back(17);
+																																														
+																																														originalRankings[75].push_back(92);
+																																														originalRankings[75].push_back(2855);
+																																														
+																																														originalRankings[76].push_back(93);
+																																														originalRankings[76].push_back(1647);
+																																														
+																																														originalRankings[77].push_back(94);
+																																														originalRankings[77].push_back(2628);
+																																														originalRankings[77].push_back(192);
+																																														originalRankings[77].push_back(1217);
+																																														originalRankings[77].push_back(171);
+																																														originalRankings[77].push_back(857);
+																																														
+																																														originalRankings[78].push_back(95);
+																																														originalRankings[78].push_back(2554);
+																																														
+																																														originalRankings[79].push_back(96);
+																																														originalRankings[79].push_back(3023);
+																																														
+																																														originalRankings[80].push_back(15);
+																																														originalRankings[80].push_back(974);
+																																														originalRankings[80].push_back(2628);
+																																														originalRankings[80].push_back(1035);
+																																														
+																																														originalRankings[81].push_back(44);
+																																														originalRankings[81].push_back(2500);
+																																														
+																																														originalRankings[82].push_back(69);
+																																														originalRankings[82].push_back(2848);
+																																														
+																																														originalRankings[83].push_back(71);
+																																														originalRankings[83].push_back(1518);
+																																														
+																																														originalRankings[84].push_back(76);
+																																														originalRankings[84].push_back(1326);
+																																														
+																																														originalRankings[85].push_back(89);
+																																														originalRankings[85].push_back(1694);
+																																														
+																																														originalRankings[86].push_back(91);
+																																														originalRankings[86].push_back(1339);
+																																														
+																																														originalRankings[87].push_back(5);
+																																														originalRankings[87].push_back(1991);
+																																														
+																																														originalRankings[88].push_back(43);
+																																														originalRankings[88].push_back(1930);
+																																														
+																																														originalRankings[89].push_back(73);
+																																														originalRankings[89].push_back(2553);
+																																														originalRankings[89].push_back(974);
+																																														originalRankings[89].push_back(1224);
+																																														
+																																														originalRankings[90].push_back(77);
+																																														originalRankings[90].push_back(1936);
+																																														
+																																														originalRankings[91].push_back(97);
+																																														originalRankings[91].push_back(2226);
+																																														
+																																														originalRankings[92].push_back(68);
+																																														originalRankings[92].push_back(2285);
+																																														originalRankings[92].push_back(2858);
+																																														
+																																														originalRankings[93].push_back(38);
+																																														originalRankings[93].push_back(1417);
+																																														
+																																														originalRankings[94].push_back(75);
+																																														originalRankings[94].push_back(518);
+																																														
+																																														originalRankings[95].push_back(78);
+																																														originalRankings[95].push_back(1852);
+																																														
+																																														originalRankings[96].push_back(81);
+																																														originalRankings[96].push_back(1282);
+																																														
+
+	
+	originalImpossible.clear();
+	originalImpossible.resize(originalRankings.size());
+	
+	for (int j = 0 ; j < originalRankings.size() ; j++) {
+		originalImpossible[j].push_back(0);
+		originalImpossible[j].push_back(1);
+		if (originalImpossible[j].size()>2) {
+			for (int i = 2 ; i < originalImpossible[j].size() ; i++) {
+				originalImpossible[j].push_back(0);
+			}
+		}
+	}
+	
+	
+	
+	
+	for (int j = 0 ; j < originalRankings.size() ; j++) {
+		for (int i = 0 ; i < originalRankings[j].size() ; i++) {
+			cout << originalRankings[j][i] << "\t";
+		}
+		cout << "\n";
+	}
+	
+	
+	
     vector<int> theLoops;
     vector<string> thePeople;
     theLoops.clear();
@@ -1133,9 +1592,11 @@ void DUMMY::matchingStars(vector<vector<int> > profile, int dim, vector<int> &th
             details << newCleared << "\t" << (newCleared-simulated-firstStep) << "\t";
             for (int h = 0 ; h < theLoops.size() ; h++) {
                 details << thisLoops[h] << "\t";
+							cout << thisLoops[h] << "\t";
             }
             details << "\n";
-            
+					cout << "\n";
+					
             // Storing the matching to a file
             
             //theMatchings.open(fileNameMatchings, std::ofstream::out | std::ofstream::app);
@@ -1415,8 +1876,7 @@ void DUMMY::checkImpossible(vector<vector<int> > profile, int i0, int s0, vector
     // i0 comes from originalRankings[j][i] = name of a candidate
     // s0 comes from j = index of the deparment in originalRankings[][] (not the name!)
     
-
-    
+	
     int decided = 0;
     vector<vector<int> > rankings;
     vector<int> candidates;
