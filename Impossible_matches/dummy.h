@@ -59,7 +59,7 @@ public:
     
     void newCheckImpossible(const vector<vector<int> > &profile, const int &i0, const int &s0, vector<vector<int> > &impossible);
     
-    void matchProcess(const vector<vector<int>> &thisrankings, const vector<int> & matchingDep, bool &isAnImpossible, vector<int> &myMatchingDep, const vector<int> & candToBeMatched);
+    void matchProcess(const vector<vector<int> > &thisrankings, const vector<int> & matchingDep, bool &isAnImpossible, vector<int> &myMatchingDep, const vector<int> & candToBeMatched);
 
     void newrankedMutiple(vector<vector<int> > &rankingsOfPositions);
 
@@ -80,10 +80,10 @@ public:
     void implementStarsRealChoices(vector<vector<int> > &profile, int &numberRealChoices, int &numberStars);
     void implementPseudoStarsRealChoices(vector<vector<int> > &profile, int &numberRealChoices, int &numberPseudoStars);
     bool anotherStarsLoop(vector<vector<int> > profile);
-    bool findAndCleanImpossible(vector<vector<int>> &profile);
-    void getChoices(const vector<vector<int>> & thisrankings, const vector<int> & matchingDep, int &toBeMatched, vector<int> &choiceSet, const vector<int> & candToBeMatched);
+    bool findAndCleanImpossible(vector<vector<int> > &profile);
+    void getChoices(const vector<vector<int> > & thisrankings, const vector<int> & matchingDep, int &toBeMatched, vector<int> &choiceSet, const vector<int> & candToBeMatched);
     void getStars(vector<vector<int> > profile, vector<int> &theStars, vector<vector<int> > &theirChoices);
-    void findCandidate(const vector<vector<int>> &thisrankings, const vector<int> &matchingDep, int &toBeMatched);
+    void findCandidate(const vector<vector<int> > &thisrankings, const vector<int> &matchingDep, int &toBeMatched);
     //
     //  stepTwoReal
     //
