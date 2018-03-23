@@ -36,12 +36,15 @@ DUMMY::DUMMY()
 
 // Give the index number of "a" in a vector "S"
 int DUMMY::index(const vector<int> &S, int a){
-	auto it_found = (std::find(S.begin(), S.end(), a));
-	if (it_found==S.end()) {
-		return -1;
+	int  ans=-1;
+	if (S.size()>1) {
+		for (int i = 0 ; i < S.size(); i++) {
+			if (S[i]==a) {
+				ans=i;
+			}
+		}
 	}
-	size_t pose = std::distance(S.begin(), it_found);
-	return (int)(pose);
+	return(ans);
 }
 
 
@@ -252,7 +255,7 @@ void DUMMY::newrankedMutiple(vector<vector<int> > &rankingsOfPositions) {
     size_t sizeCandidateSet = candidateSet.size();
     numberRanked.resize(sizeCandidateSet);
     for (i = 0 ; i < sizeCandidateSet ; i++) {
-        int theGuy;
+        int theGuy = candidateSet[i];
         for (j = 0 ; j < numberPositions ; j++) {
             if (indexInRankings(rankingsOfPositions[j], theGuy)>0) {
                 numberRanked[i].push_back(j);
@@ -1718,7 +1721,7 @@ vector<vector<int> > DUMMY::readRankings() {
 //  Given a matching, find a candidate who is not matched but ranked for
 //  a position above a candidate matched (to that position)
 
-void DUMMY::findCandidate(const vector<vector<int>> &thisrankings, const vector<int> &matchingDep, int &toBeMatched) {
+void DUMMY::findCandidate(const vector<vector<int> > &thisrankings, const vector<int> &matchingDep, int &toBeMatched) {
     // get a candidate to be matched
     size_t numberRankings = thisrankings.size();
     for (int j = 0 ; j < numberRankings ; j++) {
@@ -1753,7 +1756,7 @@ void DUMMY::findCandidate(const vector<vector<int>> &thisrankings, const vector<
 //    (that rank that candidate)                                        //
 //                                                                      //
 
-void DUMMY::getChoices(const vector<vector<int>> & thisrankings, const vector<int> & matchingDep, int &toBeMatched, vector<int> &choiceSet, const vector<int> & candToBeMatched) {
+void DUMMY::getChoices(const vector<vector<int> > & thisrankings, const vector<int> & matchingDep, int &toBeMatched, vector<int> &choiceSet, const vector<int> & candToBeMatched) {
     vector<int> possiblePositions;
     possiblePositions.clear();
     vector<int> possibleRanks;
@@ -1887,7 +1890,7 @@ void DUMMY::getChoices(const vector<vector<int>> & thisrankings, const vector<in
 //
 
 
-void DUMMY::matchProcess(const vector<vector<int>> &thisrankings, const vector<int> & matchingDep, bool &isAnImpossible, vector<int> &myMatchingDep, const vector<int> & candToBeMatched) {
+void DUMMY::matchProcess(const vector<vector<int> > &thisrankings, const vector<int> & matchingDep, bool &isAnImpossible, vector<int> &myMatchingDep, const vector<int> & candToBeMatched) {
 
     vector<int> choiceSet;
     choiceSet.clear();
@@ -2100,7 +2103,7 @@ void DUMMY::predictions(vector<vector<int> > &rankings, string step, int numberR
 //                                                                      //
 //                                                                      //
 
-bool DUMMY::findAndCleanImpossible(vector<vector<int>> &thisRankings) {
+bool DUMMY::findAndCleanImpossible(vector<vector<int> > &thisRankings) {
     bool foundImpossible=false;
     vector<vector<int> > thisImpossible;
     thisImpossible.clear();
