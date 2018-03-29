@@ -1,0 +1,1 @@
+The code uses standard libraries. It can be compiled with either g++ or gcc, just comment/uncomment the command in the Makefile. 
