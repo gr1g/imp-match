@@ -1,1 +1,3 @@
 The code uses standard libraries. It can be compiled with either g++ or gcc, just comment/uncomment the command in the Makefile. 
+
+data files must be located in the same folder as the binary.
